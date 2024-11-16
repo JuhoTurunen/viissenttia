@@ -19,8 +19,8 @@ Create a new citation
       </ul>
     {% endif %}
   {% endwith %}
+  <!--Have to ask the customer that what style of page they prefer for adding articles-->
   <label for="citation_type">Citation type:</label>
-  <!--Lisää tähän looppi joka hakee eri viitetyylit ja listaa ne vaihtoehtoina. Tämän jälkeen listattujen kenttien tulee muuttua viitetyypin mukaan-->
   <select name="citation_type">
     <option value="article">Article</option>
   </select>
@@ -45,6 +45,12 @@ Create a new citation
 
   <label for="pages">Pages:</label>
   <input type="text" name="pages">
+
+  <label for="month">Pages:</label>
+  <input type="text" name="month">
+
+  <label for="note">Pages:</label>
+  <input type="text" name="note">
 
   <br>
   <button type="submit">
