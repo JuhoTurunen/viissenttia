@@ -6,9 +6,10 @@ Create a new citation
 
 {% block body %}
 
+
 <h2>Create a new citation</h2>
 
-<form action="/add_citation/create" method="post">
+<form action="/add_citation" method="post">
   {% with messages = get_flashed_messages() %}
     {% if messages %}
       <ul>

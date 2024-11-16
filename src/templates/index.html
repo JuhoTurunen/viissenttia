@@ -8,11 +8,16 @@ Citation app
 
 <h2>Do you want to do?</h2>
 
-    <div>
-        <a href="/add_citation">Add a new citation</a>
-    </div>
-    <div>
-        <a href="/view_citations">View citations</a>
-    </div>
+    <form action="/add_citation" method="GET">
+        <button type="submit">
+            Add a new citation
+        </button>
+    </form>
+    
+    <form action="/view_citations" method="GET">
+        <button type="submit">
+            View citations
+        </button>
+    </form>
 
 {% endblock %}

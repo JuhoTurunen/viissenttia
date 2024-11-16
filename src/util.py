@@ -6,7 +6,7 @@ class UserInputError(Exception):
 
 def citation_form_to_class(form):
     result = None
-    if form.get("type") == "article":
+    if form.get("citation_type") == "article":
         result = Article(
             key=form.get("key"), # Required
             author=form.get("author"), # Required

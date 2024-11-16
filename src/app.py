@@ -9,7 +9,7 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/add_citation", methods=["POST"])
+@app.route("/add_citation", methods=["POST","GET"])
 def add_citation():
     # Code for displaying add_citation page
     if request.method == "GET":
@@ -26,14 +26,14 @@ def add_citation():
         
         # Attempt to create citation and then display result
         result = create_citation(citation_class)
-        if result.get("success"):
+        if result=="success":
             flash("Successfully added citation.")
-            return redirect("/")
+            return redirect("/add_citation")
         flash(result.get("error", "Failed to add citation. Please try again later."), "error")
         return redirect("/add_citation")
 
 
-@app.route("/view_citations")
+@app.route("/view_citations", methods=["GET","POST"])
 def view():
     citations = get_citations()
     return render_template("view_citations.html", citations=citations)

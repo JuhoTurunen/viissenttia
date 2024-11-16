@@ -13,6 +13,7 @@ def create_citation(citation_class):
     """ sql = text("INSERT INTO todos (content) VALUES (:content)")
     db.session.execute(sql, { "content": content })
     db.session.commit() """
+    return "success"
     # I left the boilerplate commented for copy pasting but create citation inside the database from content 
     # (containing data from the html form)
     
