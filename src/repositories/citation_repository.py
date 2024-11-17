@@ -15,9 +15,9 @@ def create_citation(citation_class):
     :return: success message or raise error
     """
     try:
-        # Insert to CitationBase
+        # Insert to citation_base
         citation_base_sql = text("""
-            INSERT INTO CitationBase (key, type, created_at)
+            INSERT INTO citation_base (key, type, created_at)
             VALUES (:key, :type, :created_at)
             RETURNING id
         """)
@@ -28,10 +28,10 @@ def create_citation(citation_class):
         })
         citation_base_id = result.fetchone()[0]
 
-        # Insert to Articles
+        # Insert to articles
         if isinstance(citation_class, Article):
             article_sql = text("""
-                INSERT INTO Articles (citation_id, author, title, journal, year, volume, number, pages, month, note)
+                INSERT INTO articles (citation_id, author, title, journal, year, volume, number, pages, month, note)
                 VALUES (:citation_id, :author, :title, :journal, :year, :volume, :number, :pages, :month, :note)
             """)
             db.session.execute(article_sql, {
