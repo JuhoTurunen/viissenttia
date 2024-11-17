@@ -4,6 +4,8 @@ from config import app
 from util import citation_form_to_class
 
 
+
+
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -29,7 +31,8 @@ def add_citation():
         if result=="success":
             flash("Successfully added citation.")
             return redirect("/add_citation")
-        flash(result.get("error", "Failed to add citation. Please try again later."), "error")
+        #flash(result.get("error", "Failed to add citation. Please try again later."), "error") Commented away for testing
+        flash("Failed to add citation. Please try again later.")
         return redirect("/add_citation")
 
 
