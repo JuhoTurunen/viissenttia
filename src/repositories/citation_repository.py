@@ -52,7 +52,7 @@ def create_citation(citation_class):
     except Exception as e:
         db.session.rollback
         print(e)
-        return None
+        return False
 
-    return "success"
+    return True
 

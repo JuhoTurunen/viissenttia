@@ -28,7 +28,7 @@ def add_citation():
         
         # Attempt to create citation and then display result
         result = create_citation(citation_class)
-        if result=="success":
+        if result:
             flash("Successfully added citation.")
             return redirect("/add_citation")
         #flash(result.get("error", "Failed to add citation. Please try again later."), "error") Commented away for testing
