@@ -40,11 +40,11 @@ You can test the application by following these steps:
 1. Clone the repository and go to its root directory
 2. Ensure you have poetry installed, then install dependencies with $ poetry install
 3. Create a file .env into the root directory and add lines:
-'''
+´´´
 DATABASE_URL=<path-to-database>
 TEST_ENV=true
 SECRET_KEY=<your-secret-key>
-'''
+´´´
 4. Activate the virtual environment with $ poetry shell
 5. Start the application with $ python3 src/index.py 
 6. You can now use the application on your browser by navigating to: http://localhost:5001/
