@@ -6,7 +6,7 @@ The purpose of the application is reference management.
 ## Table of contents
 - [Application functionality and features](#application-functionality-and-features)
 - [Definition of done](#definition-of-done)
-- [Backlog](#backlog)
+- [Backlogs](#backlogs)
 - [Testing the application](#testing-the-application)
 
 
@@ -25,13 +25,18 @@ The core functionality and features of the application are:
 ## Definition of done
 
 1. Functionality: All core features outlined in the previous section are implemented and functional
-2. Testing; Automated tests using the Robot Framework are written for core features and all tests pass
+2. Testing: Automated tests using the Robot Framework are written for core features and all tests pass
 3. Documentation: README.md contains instructions for setup and testing
 
 
-## Backlog
+## Backlogs
 
 The product and sprint backlogs can be found [here](https://helsinkifi-my.sharepoint.com/:x:/g/personal/juzturun_ad_helsinki_fi/ETudBp6OxL5GlwRVfpZgC8cBuwzMSGh-2SWFHwJBbWLTJA?e=7TnnLh)
+
+
+## CI (GitHub Actions)
+
+[![GHA workflow badge](https://github.com/JuhoTurunen/viissenttia/actions/workflows/ci.yaml/badge.svg)](https://github.com/JuhoTurunen/viissenttia/actions)
 
 
 ## Testing the application
