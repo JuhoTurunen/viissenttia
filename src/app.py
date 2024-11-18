@@ -23,7 +23,7 @@ def add_citation():
         # Turn citation form into a citation class
         citation_class = citation_data_to_class(request.form)
         if not citation_class:
-            flash(f"Citation type {request.form.get("type")} not found.")
+            flash(f"Citation type not found.")
             return redirect("/add_citation")
         
         # Attempt to create citation and then display result
