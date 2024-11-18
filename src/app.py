@@ -1,7 +1,7 @@
 from flask import redirect, render_template, request, flash
 from repositories.citation_repository import get_citations, create_citation
 from config import app
-from util import citation_form_to_class
+from util import citation_data_to_class
 
 
 
@@ -21,7 +21,7 @@ def add_citation():
     if request.method == "POST":
         
         # Turn citation form into a citation class
-        citation_class = citation_form_to_class(request.form)
+        citation_class = citation_data_to_class(request.form)
         if not citation_class:
             flash(f"Citation type {request.form.get("type")} not found.")
             return redirect("/add_citation")
@@ -39,4 +39,5 @@ def add_citation():
 @app.route("/view_citations", methods=["GET","POST"])
 def view():
     citations = get_citations()
+    print(citations[1].__str__())
     return render_template("view_citations.html", citations=citations)

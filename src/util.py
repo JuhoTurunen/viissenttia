@@ -4,9 +4,9 @@ class UserInputError(Exception):
     pass
 
 
-def citation_form_to_class(form):
+def citation_data_to_class(form):
     result = None
-    if form.get("citation_type") == "article":
+    if form.get("type") == "article":
         result = Article(
             key=form.get("key"), # Required
             author=form.get("author"), # Required
