@@ -48,7 +48,7 @@ def create_citation(citation_class):
                 """
                 INSERT INTO articles (citation_id, author, title, journal, year, volume, number, pages, month, note)
                 VALUES (:citation_id, :author, :title, :journal, :year, :volume, :number, :pages, :month, :note)
-            """
+                """
             )
             db.session.execute(
                 article_sql,
