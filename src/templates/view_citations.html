@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block title %}
-Create a new citation
+View Citations
 {% endblock %}
 
 {% block body %}
@@ -10,7 +10,17 @@ Create a new citation
 
 <h2>Citations</h2>
 
-
+{% for citation in citations %}
+<div>
+    {{citation}}
+    <button>
+        Generate BibTex
+    </button>
+    <button>
+        Edit
+    </button>
+</div>
+{% endfor %}
 
 
 
