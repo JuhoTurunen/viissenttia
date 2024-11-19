@@ -52,4 +52,4 @@ SECRET_KEY=<your-secret-key>
 4. Activate the virtual environment with $ poetry shell
 5. Start the application with $ python3 src/index.py 
 6. You can now use the application on your browser by navigating to: http://localhost:5001/
-7. Run tests with $ robot src/story_tests/
+7. Run tests with $ robot src/tests/
