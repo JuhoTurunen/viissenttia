@@ -58,10 +58,10 @@ def create_citation(citation_class):
                     "title": citation_class.title,
                     "journal": citation_class.journal,
                     "year": citation_class.year,
-                    "volume": citation_class.volume,
-                    "number": citation_class.number,
+                    "volume": citation_class.volume if citation_class.volume else None,
+                    "number": citation_class.number if citation_class.number else None,
                     "pages": citation_class.pages,
-                    "month": citation_class.month,
+                    "month": citation_class.month if citation_class.month else None,
                     "note": citation_class.note,
                 },
             )
