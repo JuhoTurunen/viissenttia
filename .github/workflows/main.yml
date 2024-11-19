@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, boilerplate_refactor]
   pull_request:
-    branches: [main]
+    branches: [main, boilerplate_refactor]
 
 jobs:
   build:
