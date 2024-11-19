@@ -47,7 +47,6 @@ You can test the application by following these steps:
 3. Create a file .env into the root directory and add lines:
 ```
 DATABASE_URL=<path-to-database>
-TEST_ENV=true
 SECRET_KEY=<your-secret-key>
 ```
 4. Activate the virtual environment with $ poetry shell
