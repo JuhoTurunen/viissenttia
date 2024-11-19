@@ -70,31 +70,19 @@ Add Citation Page Can Be Opened
 #     Submit Citation Form
 #     Page Should Contain  Successfully added citation
 
-# Added Citation With All Fields Can Be Viewed
-#     Fill All Citation Fields  
-#     ...  ${VALID_KEY}  
-#     ...  ${VALID_AUTHOR}  
-#     ...  ${VALID_TITLE}  
-#     ...  ${VALID_JOURNAL}  
-#     ...  ${VALID_YEAR}
-#     ...  ${VALID_VOLUME}
-#     ...  ${VALID_NUMBER}
-#     ...  ${VALID_PAGES}
-#     ...  ${VALID_MONTH}
-#     ...  ${VALID_NOTE}
-#     Submit Citation Form
-#     Click Button  Return to frontpage
-#     Click Button  View citations
-#     Page Should Contain  ${VALID_KEY}
-#     Page Should Contain  ${VALID_AUTHOR}
-#     Page Should Contain  ${VALID_TITLE}
-#     Page Should Contain  ${VALID_JOURNAL}
-#     Page Should Contain  ${VALID_YEAR}
-#     Page Should Contain  ${VALID_VOLUME}
-#     Page Should Contain  ${VALID_NUMBER}
-#     Page Should Contain  ${VALID_PAGES}
-#     Page Should Contain  ${VALID_MONTH}
-#     Page Should Contain  ${VALID_NOTE}
+Added Citation With All Fields Can Be Viewed
+    Go To  ${HOME_URL}
+    Click Button  View citations
+    Page Should Contain  ${VALID_KEY}
+    Page Should Contain  ${VALID_AUTHOR}
+    Page Should Contain  ${VALID_TITLE}
+    Page Should Contain  ${VALID_JOURNAL}
+    Page Should Contain  ${VALID_YEAR}
+    Page Should Contain  ${VALID_VOLUME}
+    Page Should Contain  ${VALID_NUMBER}
+    Page Should Contain  ${VALID_PAGES}
+    Page Should Contain  ${VALID_MONTH}
+    Page Should Contain  ${VALID_NOTE}
 
 # Can Add Citation With Only Volume As Optional Field
 #     Fill Citation Form With Required Fields  ${VALID_KEY}  ${VALID_AUTHOR}  ${VALID_TITLE}  ${VALID_JOURNAL}  ${VALID_YEAR}
