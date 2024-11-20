@@ -1,6 +1,6 @@
 # viissenttia
 
-The purpose of the application is reference management.
+The purpose of the application is citation management.
 
 
 ## Table of contents
@@ -14,12 +14,12 @@ The purpose of the application is reference management.
 
 The core functionality and features of the application are:
 
-1. Adding references: Users can add references of varying types (e.g. article, book) 
-2. Listing references: Users can list stored references
-3. Exporting references: Users can export stored references in a BibTeX file that is compatible with LaTeX documents
-4. Filtering references: Users can filter references based on criteria (e.g. author, year)
-5. Categorising and tagging references: Users can associate references with categories or tags and use these as search criteria
-6. Fetching online references: Users can fetch reference details by providing a link to the reference (e.g. in the ACM Digital Library) or the DOI 
+1. Adding citations: Users can add citations of varying types (e.g. article, book) 
+2. Listing citations: Users can list stored citations
+3. Exporting citations: Users can export stored citations in a BibTeX file that is compatible with LaTeX documents
+4. Filtering citations: Users can filter citations based on criteria (e.g. author, year)
+5. Categorising and tagging citations: Users can associate citations with categories or tags and use these as search criteria
+6. Fetching online citations: Users can fetch reference details by providing a link to the reference (e.g. in the ACM Digital Library) or the DOI 
 
 
 ## Definition of done
@@ -36,7 +36,7 @@ The product and sprint backlogs can be found [here](https://helsinkifi-my.sharep
 
 ## CI (GitHub Actions)
 
-[![GHA workflow badge](https://github.com/JuhoTurunen/viissenttia/actions/workflows/ci.yaml/badge.svg)](https://github.com/JuhoTurunen/viissenttia/actions)
+[![GHA workflow badge](https://github.com/JuhoTurunen/viissenttia/actions/workflows/main.yaml/badge.svg)](https://github.com/JuhoTurunen/viissenttia/actions)
 
 
 ## Testing the application
