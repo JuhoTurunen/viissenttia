@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Create a new citation
+{% endblock %}
+
+{% block body %}
+
+
+<h2>Create a new citation</h2>
+
+<form action="/add_citation" method="post">
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+  <!--Have to ask the customer that what style of page they prefer for adding articles-->
+  <label for="type">Citation type:</label>
+  <select name="type">
+    <option value="article">Article</option>
+  </select>
+
+  <label for="key">Key:</label>
+  <input type="text" name="key">
+
+  <label for="author">Author:</label>
+  <input type="text" name="author">
+
+  <label for="title">Title:</label>
+  <input type="text" name="title">
+  
+  <label for="journal">Journal:</label>
+  <input type="text" name="journal">
+
+  <label for="year">Year:</label>
+  <input type="text" name="year">
+
+  <label for="volume">Volume:</label>
+  <input type="text" name="volume">
+
+  <label for="number">Number:</label>
+  <input type="text" name="number">
+
+  <label for="pages">Pages:</label>
+  <input type="text" name="pages">
+
+  <label for="month">Month:</label>
+  <input type="text" name="month">
+
+  <label for="note">Note:</label>
+  <input type="text" name="note">
+
+  <br>
+  <button type="submit">
+    Create
+  </button>
+</form>
+
+{% endblock %}

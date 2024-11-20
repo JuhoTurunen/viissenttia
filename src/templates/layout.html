@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="stylesheet" href="citation.css">
     <meta charset="utf-8" />
     <meta
       name="viewport"
@@ -8,7 +9,15 @@
     />
     <title>{% block title %}{% endblock %}</title>
   </head>
+
   <body>
+    <!--Renders return button to every page based on this-->
+    <div class="topnav">
+      <a href="/">Home</a>
+      <a href="/view_citations">View Citations</a>
+      <a href="/add_citation">Add Citation</a>
+    </div>
     {% block body %}{% endblock %}
+
   </body>
 </html>

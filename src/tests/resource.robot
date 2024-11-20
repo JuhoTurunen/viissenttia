@@ -1,5 +1,6 @@
 *** Settings ***
 Library  SeleniumLibrary
+Library  ../app.py
 
 *** Variables ***
 ${SERVER}     localhost:5001
@@ -8,6 +9,7 @@ ${HOME_URL}   http://${SERVER}
 ${RESET_URL}  http://${SERVER}/reset_db
 ${BROWSER}    chrome
 ${HEADLESS}   false
+${ADD_CITATION_URL}  http://${SERVER}/add_citation
 
 *** Keywords ***
 Open And Configure Browser
@@ -24,6 +26,9 @@ Open And Configure Browser
     END
     Open Browser  browser=${BROWSER}  options=${options}
 
-Reset Todos
+Reset App
     Go To  ${RESET_URL}
+
+Go To Create a new
+    Go To    ${ADD_CITATION_URL}
 
