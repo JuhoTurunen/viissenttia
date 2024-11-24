@@ -1,0 +1,75 @@
+form {
+    min-width: max-content;
+    max-width: 30%;
+    padding: 1em;
+    margin: 2em auto;
+    font-size: 1.1em;
+    background-color: #ffffff;
+    border: 2px solid black;
+    box-shadow: 4px 6px 0px 1px rgba(0, 0, 0, 0.309);
+    overflow: hidden;
+}
+
+h2 {
+    margin: 0 0 1em 0;
+}
+
+label {
+    width: 50%;
+    margin-bottom: 1em;
+    float: left;
+    clear: left;
+}
+
+input, select {
+    width: 50%;
+    margin-bottom: 1em;
+    font-size: 1.1em;
+    float: left;
+}
+
+form div {
+    clear: both;
+    overflow: hidden;
+}
+
+#opt_btn {
+    display: block;
+    margin: 0 auto 1em auto;
+    border: none;
+    clear: both;
+    font-size: 1.1em;
+    background-color: transparent;
+}
+
+#opt_btn:hover {
+    font-weight: 600;
+}
+
+#opt_btn::after, .hidden #opt_btn:hover::after {
+    content: "";
+    display: inline-block;
+    width: 0.5em;
+    height: 0.5em;
+    border: 2px solid transparent;
+    border-top-color: black;
+    border-left-color: black;
+    border-radius: 1px;
+    transform: translate(80%,-15%) rotate(-135deg);
+    position: relative;
+}
+
+#opt_btn:hover::after, .hidden #opt_btn::after {
+    transform: translate(80%, 45%) rotate(45deg);
+}
+
+.hidden label, .hidden input {
+    display: none;
+}
+
+input[type="submit"] {
+    display: block;
+    width: 100%;
+    clear: both;
+    margin-bottom: 1em;
+}

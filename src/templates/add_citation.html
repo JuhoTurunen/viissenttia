@@ -4,61 +4,65 @@
 Create a new citation
 {% endblock %}
 
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/add_citation.css') }}">
+{% endblock %}
+
 {% block body %}
 
 
-<h2>Create a new citation</h2>
 
 <form action="/add_citation" method="post">
-  {% with messages = get_flashed_messages() %}
-    {% if messages %}
-      <ul>
-      {% for message in messages %}
-        <li>{{ message }}</li>
-      {% endfor %}
-      </ul>
-    {% endif %}
-  {% endwith %}
-  <!--Have to ask the customer that what style of page they prefer for adding articles-->
+  <h2>Create a new citation</h2>
   <label for="type">Citation type:</label>
-  <select name="type">
+  <select name="type" required>
     <option value="article">Article</option>
   </select>
 
   <label for="key">Key:</label>
-  <input type="text" name="key">
+  <input type="text" name="key" required>
 
   <label for="author">Author:</label>
-  <input type="text" name="author">
+  <input type="text" name="author" required>
 
   <label for="title">Title:</label>
-  <input type="text" name="title">
-  
+  <input type="text" name="title" required>
+
   <label for="journal">Journal:</label>
-  <input type="text" name="journal">
+  <input type="text" name="journal" required>
 
   <label for="year">Year:</label>
-  <input type="text" name="year">
+  <input type="text" name="year" required>
+  <div class="hidden">
+    <button type="button" id="opt_btn">Show optional fields</button>
+    <label for="volume">Volume:</label>
+    <input type="text" name="volume">
 
-  <label for="volume">Volume:</label>
-  <input type="text" name="volume">
+    <label for="number">Number:</label>
+    <input type="text" name="number">
 
-  <label for="number">Number:</label>
-  <input type="text" name="number">
+    <label for="pages">Pages:</label>
+    <input type="text" name="pages">
 
-  <label for="pages">Pages:</label>
-  <input type="text" name="pages">
+    <label for="month">Month:</label>
+    <input type="text" name="month">
 
-  <label for="month">Month:</label>
-  <input type="text" name="month">
-
-  <label for="note">Note:</label>
-  <input type="text" name="note">
-
-  <br>
-  <button type="submit">
-    Create
-  </button>
+    <label for="note">Note:</label>
+    <input type="text" name="note">
+  </div>
+  <input type="submit" name="submit" value="Create citation">
 </form>
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul>
+  {% for message in messages %}
+  <li>{{ message }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
+<script src="{{url_for('static', filename='javascript/add_citation.js')}}"></script>
 
 {% endblock %}
