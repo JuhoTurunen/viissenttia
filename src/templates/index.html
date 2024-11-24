@@ -1,23 +1,29 @@
 {% extends "layout.html" %}
 
 {% block title %}
-Citation app
+View Citations
 {% endblock %}
 
 {% block body %}
 
-<h2>Do you want to do?</h2>
 
-    <form action="/add_citation" method="GET">
-        <button type="submit">
-            Add a new citation
-        </button>
-    </form>
-    
-    <form action="/view_citations" method="GET">
-        <button type="submit">
-            View citations
-        </button>
-    </form>
+
+<h2>Citations</h2>
+
+<a href="{{url_for('download')}}">Generate and Download Bibtex</a>
+
+
+
+{% for citation in citations %}
+<div>
+    {{citation}}
+
+    <button>
+        Edit
+    </button>
+</div>
+{% endfor %}
+
+
 
 {% endblock %}

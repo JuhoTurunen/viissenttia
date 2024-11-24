@@ -7,6 +7,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <title>{% block title %}{% endblock %}</title>
   </head>
 
@@ -14,8 +15,8 @@
     <!--Renders return button to every page based on this-->
     <div class="topnav">
       <a href="/">Home</a>
-      <a href="/view_citations">View Citations</a>
       <a href="/add_citation">Add Citation</a>
+      <a href="{{url_for('download')}}">Generate BibTeX</a>
     </div>
     {% block body %}{% endblock %}
 

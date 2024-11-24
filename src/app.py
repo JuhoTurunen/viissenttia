@@ -8,8 +8,8 @@ from util import citation_data_to_class, citation_data_to_bibtex_file
 
 @app.route("/")
 def index():
-    return render_template("index.html")
-
+    citations = get_citations()
+    return render_template("index.html", citations=citations)
 
 @app.route("/add_citation", methods=["POST","GET"])
 def add_citation():
@@ -34,14 +34,6 @@ def add_citation():
         #flash(result.get("error", "Failed to add citation. Please try again later."), "error") Commented away for testing
         flash("Failed to add citation. Please try again later.")
         return redirect("/add_citation")
-
-
-@app.route("/view_citations", methods=["GET","POST"])
-def view():
-    citations = get_citations()
-    return render_template("view_citations.html", citations=citations)
-
-        
 
 
 @app.route('/download')
