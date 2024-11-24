@@ -1,6 +1,5 @@
 from config import db
 from sqlalchemy import text
-
 from entities.citation import Article
 from util import citation_data_to_class
 
@@ -15,7 +14,11 @@ def get_citations():
             """
         )
     ).mappings()
-    return [citation_data_to_class(dict(c)) for c in citations]
+    return sorted(
+        [citation_data_to_class(dict(c)) for c in citations],
+        key=lambda x: x.created_at,
+        reverse=True,
+    )
 
 
 def create_citation(citation_class):
