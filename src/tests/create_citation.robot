@@ -48,7 +48,7 @@ Submit Citation Form
 *** Test Cases ***
 Add Citation Page Can Be Opened
     Go To Add Citation Page
-    Page Should Contain  Create a new citation
+    Title Should Be  Create a new citation
 
 # Can Add Valid Article Citation With Required Fields
 #     Fill Citation Form With Required Fields  ${VALID_KEY}  ${VALID_AUTHOR}  ${VALID_TITLE}  ${VALID_JOURNAL}  ${VALID_YEAR}
@@ -72,7 +72,6 @@ Add Citation Page Can Be Opened
 
 Added Citation With All Fields Can Be Viewed
     Go To  ${HOME_URL}
-    Click Button  View citations
     Page Should Contain  ${VALID_KEY}
     Page Should Contain  ${VALID_AUTHOR}
     Page Should Contain  ${VALID_TITLE}
