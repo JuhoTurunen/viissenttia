@@ -28,10 +28,13 @@ def citation_data_to_bibtex_file(list):
     curly_brace_open="{"
     curly_brace_close="}"
     banned_keys={"created_at","type","key"}
-    with open((os.path.join(f"{os.path.dirname(__file__)}/bibtex_files/","citations.bib")),"w") as bibtex:
+    file_path=os.path.join(f"{os.path.dirname(__file__)}/bibtex_files/","citations.bib")
+    with open(file_path,"w") as bibtex:
         for form_as_class in list:
             form=vars(form_as_class)
-            bibtex.write(f"@{form.get("type")}{curly_brace_open}{form.get("key")},\n")
+            bibtex.write(f"@{form.get("type")}")
+            bibtex.write(curly_brace_open)
+            bibtex.write(f"{form.get("key")},\n")
             for key,value in form.items():
                 if key not in banned_keys and value:
                     bibtex.write(f"{"\t"}{key} = {{{value}}},\n")

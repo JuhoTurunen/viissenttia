@@ -8,3 +8,5 @@ report.html
 *.png
 .DS_Store
 .DS_Store?
+geckodriver*
+selenium-screenshot*
