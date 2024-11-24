@@ -33,12 +33,13 @@ def citation_data_to_bibtex_file(list):
         for form_as_class in list:
             form=vars(form_as_class)
             type=form.get("type")
+            formkey=form.get("key")
+            tab="\t"
             bibtex.write(f"@{type}")
             bibtex.write(curly_brace_open)
-            formkey=form.get("key")
             bibtex.write(f"{formkey},\n")
             for key,value in form.items():
                 if key not in banned_keys and value:
-                    bibtex.write(f"{"\t"}{key} = {{{value}}},\n")
+                    bibtex.write(f"{tab}{key} = {{{value}}},\n")
             bibtex.write(curly_brace_close+"\n")
     
