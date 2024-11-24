@@ -23,7 +23,7 @@ Reset App And Go To Add Citation Page
 
 Go To Add Citation Page
     Go To  ${HOME_URL}
-    Click Button  Add a new citation
+    Click Link  Add Citation
 
 Fill Citation Form With Required Fields
     [Arguments]  ${key}  ${author}  ${title}  ${journal}  ${year}
@@ -114,7 +114,6 @@ Added Citation With All Fields Can Be Viewed
 #     Page Should Contain  Successfully added citation
 
 Cannot Add Citation Without Required Fields
-    Fill Citation Form With Required Fields  ${EMPTY}  ${EMPTY}  ${EMPTY}  ${EMPTY}  ${EMPTY}
     Submit Citation Form
     Page Should Contain  Failed to add citation
 
