@@ -32,3 +32,7 @@ body {
     color: #eff6f8;
     background-color: #1a2c60;
 }
+
+.topnav a.reverse {
+    margin-left: auto;
+}
