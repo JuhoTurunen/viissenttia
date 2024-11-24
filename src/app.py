@@ -1,4 +1,4 @@
-from flask import redirect, render_template, request, flash, send_from_directory,send_file
+from flask import redirect, render_template, request, flash, send_file
 from repositories.citation_repository import get_citations, create_citation
 from config import app
 from util import citation_data_to_class, citation_data_to_bibtex_file
@@ -38,7 +38,6 @@ def add_citation():
 
 @app.route("/view_citations", methods=["GET","POST"])
 def view():
-    
     citations = get_citations()
     return render_template("view_citations.html", citations=citations)
 

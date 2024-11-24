@@ -32,7 +32,8 @@ def citation_data_to_bibtex_file(list):
     with open(file_path,"w") as bibtex:
         for form_as_class in list:
             form=vars(form_as_class)
-            bibtex.write(f"@{form.get("type")}")
+            type=form.get("type")
+            bibtex.write(f"@{type}")
             bibtex.write(curly_brace_open)
             bibtex.write(f"{form.get("key")},\n")
             for key,value in form.items():
