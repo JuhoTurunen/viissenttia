@@ -26,7 +26,7 @@ def citation_data_to_class(form):
     return result
 
 
-def citation_data_to_bibtex_file(list):
+def citation_class_to_bibtex_file(list):
     curly_brace_open = "{"
     curly_brace_close = "}"
     banned_keys = {"created_at", "type", "key"}

@@ -1,7 +1,7 @@
 from flask import redirect, render_template, request, flash, send_file
 from repositories.citation_repository import get_citations, create_citation
 from config import app
-from util import citation_data_to_class, citation_data_to_bibtex_file
+from util import citation_data_to_class, citation_class_to_bibtex_file
 
 
 
@@ -39,7 +39,7 @@ def add_citation():
 @app.route('/download')
 def download():
     citations = get_citations()
-    citation_data_to_bibtex_file(citations)
+    citation_class_to_bibtex_file(citations)
     path = './bibtex_files/citations.bib'
     return send_file(path, as_attachment=True)
 
