@@ -31,3 +31,5 @@ jobs:
         run: poetry install
       - name: Run robot tests
         run: bash run_robot_tests.sh
+      - name: Run Pylint
+        run: poetry run pylint src/
