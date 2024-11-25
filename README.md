@@ -43,14 +43,22 @@ The product and sprint backlogs can be found [here](https://helsinkifi-my.sharep
 ## Testing the application
 
 You can test the application by following these steps: 
-1. Clone the repository and go to its root directory
-2. Ensure you have poetry installed, then install dependencies with $ poetry install
-3. Create a file .env into the root directory and add lines:
+1. Ensure you have PostgreSQL installed. Installation instructions for variuous systems can be found [here](https://www.postgresql.org/download/)
+2. Clone the repository with $ git clone https://github.com/JuhoTurunen/viissenttia.git
+3. Go to the root directory
+3. Ensure you have poetry installed, then install dependencies with $ poetry install
+4. Set up the database
+    - Run PostgreSQL
+    - Create a test database with $ createdb <db_name>;
+    - Load the schema and test data with $ psql -d <db_name> -f test_data.sql
+    - Exit PostgreSQL with $ \q
+5. To configure environment variables, create a file .env into the root directory and add lines:
 ```
 DATABASE_URL=<path-to-database>
 SECRET_KEY=<your-secret-key>
 ```
-4. Activate the virtual environment with $ poetry shell
-5. Start the application with $ python3 src/index.py 
-6. You can now use the application on your browser by navigating to: http://localhost:5001/
-7. Run tests with $ robot src/tests/
+6. Activate the virtual environment with $ poetry shell
+7. Start the application with $ python3 src/index.py 
+8. You can now use the application on your browser by navigating to: http://localhost:5001/
+9. Run Robot tests in a separate terminal window with $ robot src/tests/
+10. Stop the application with *ctrl + c* and exit poetry shell with $ exit
