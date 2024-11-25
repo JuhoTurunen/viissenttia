@@ -26,7 +26,8 @@ The core functionality and features of the application are:
 
 1. Functionality: All core features outlined in the previous section are implemented and functional
 2. Testing: Automated tests using the Robot Framework are written for core features and all tests pass
-3. Documentation: README.md contains instructions for setup and testing
+3. Code quality: Code adheres to the project's coding standards and is verified with Pylint (minimum acceptable score 8.00/10)
+4. Documentation: README.md contains instructions for setup and testing
 
 
 ## Backlogs
