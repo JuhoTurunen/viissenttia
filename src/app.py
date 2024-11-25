@@ -31,7 +31,7 @@ def add_citation():
 #flash(result.get("error", "Failed to add citation. Please try again later."),"error") Commented away for testing
         flash("Failed to add citation. Please try again later.")
         return redirect("/add_citation")
-
+    return "Invalid request method", 405
 
 @app.route('/download')
 def download():
