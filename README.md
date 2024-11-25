@@ -49,7 +49,7 @@ You can test the application by following these steps:
 3. Ensure you have poetry installed, then install dependencies with $ poetry install
 4. Set up the database
     - Run PostgreSQL
-    - Create a test database with $ createdb <db_name>;
+    - Create a test database with $ createdb <db_name>
     - Load the schema and test data with $ psql -d <db_name> -f test_data.sql
     - Exit PostgreSQL with $ \q
 5. To configure environment variables, create a file .env into the root directory and add lines:
