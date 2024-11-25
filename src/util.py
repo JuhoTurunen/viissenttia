@@ -1,5 +1,5 @@
-from entities.citation import Article
 import os.path
+from entities.citation import Article
 
 
 class UserInputError(Exception):
@@ -31,7 +31,7 @@ def citation_class_to_bibtex_file(list):
     curly_brace_close = "}"
     banned_keys = {"created_at", "type", "key"}
     file_path = os.path.join(f"{os.path.dirname(__file__)}/bibtex_files/", "citations.bib")
-    with open(file_path, "w") as bibtex:
+    with open(file_path, "w", encoding="utf-8") as bibtex:
         for form_as_class in list:
             form = vars(form_as_class)
             type = form.get("type")

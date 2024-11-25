@@ -17,7 +17,7 @@ disable=raw-checker-failed,
         missing-class-docstring
 
 [FORMAT]
-max-line-length=100
+max-line-length=120
 [REFACTORING]
 
 [DESIGN]
