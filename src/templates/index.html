@@ -12,18 +12,32 @@ Citation Manager
 
 <a href="{{url_for('download')}}">Generate and Download Bibtex</a>
 
+<h3>Saved citations</h3>
 
+{% if citations %}
 
-{% for citation in citations %}
-<div>
-    {{citation}}
+    <ul>
+        {% for citation in citations %}
+        <li>Key: {{ citation.key }}</li>
+        <li>Author: {{ citation.author }}</li>
+        <li>Title: {{ citation.title }}</li>
+        <li>Journal: {{ citation.journal }}</li>
+        <li>Year: {{ citation.year }}</li>
+        <li>Volume: {{ citation.volume }}</li>
+        <li>Number: {{ citation.number }}</li>
+        <li>Pages: {{ citation.pages }}</li>
+        <li>Month: {{ citation.month }}</li>
+        <li>Note: {{ citation.note }}</li>
 
-    <button>
-        Edit
-    </button>
-</div>
-{% endfor %}
+        <button>
+            Edit
+        </button>
 
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Add citations to see them here.</p>
+{% endif %}
 
 
 {% endblock %}
