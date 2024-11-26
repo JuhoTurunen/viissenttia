@@ -2,26 +2,55 @@ import os.path
 from entities.citation import Article
 
 
-class UserInputError(Exception):
+class ValidationError(Exception):
     pass
 
 
-def citation_data_to_class(form):
+def convert_type(type_class):
+    types = {"a number": int, "text": str}
+    return next((k for k, v in types.items() if v is type_class), str(type_class))
+
+
+class Validator:
+    def __init__(self, form):
+        self.form = form
+
+    def check(self, key, expected, required=False):
+        value = self.form.get(key) or None
+        if required and value is None:
+            raise ValidationError(f"Field {key} is required")
+        try:
+            if value is not None:
+                expected(value)
+        except Exception:
+            raise ValidationError(
+                f"Field {key} expects {convert_type(expected)}, received {convert_type(type(value))}"
+            )
+        return value
+
+
+def citation_data_to_class(form, front_facing=False):
     result = None
-    if form.get("type") == "article":
-        result = Article(
-            key=form.get("key"),  # Required
-            author=form.get("author"),  # Required
-            title=form.get("title"),  # Required
-            journal=form.get("journal"),  # Required
-            year=form.get("year"),  # Required
-            created_at=form.get("created_at"),
-            volume=form.get("volume"),
-            number=form.get("number"),
-            pages=form.get("pages"),
-            month=form.get("month"),
-            note=form.get("note"),
-        )
+    validator = Validator(form)
+
+    try:
+        if form.get("type") == "article":
+            result = Article(
+                key=validator.check("key", str, True),
+                author=validator.check("author", str, True),
+                title=validator.check("title", str, True),
+                journal=validator.check("journal", str, True),
+                year=validator.check("year", int, True),
+                created_at=validator.check("created_at", str),
+                volume=validator.check("volume", int),
+                number=validator.check("number", int),
+                pages=validator.check("pages", str),
+                month=validator.check("month", int),
+                note=validator.check("note", str),
+            )
+    except ValidationError as e:
+        print(e.args[0])
+        return e.args[0] if front_facing else result
 
     return result
 

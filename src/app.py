@@ -19,16 +19,21 @@ def add_citation():
     # Code for handling citation form
     if request.method == "POST":
         # Turn citation form into a citation class
-        citation_class = citation_data_to_class(request.form)
+        citation_class = citation_data_to_class(request.form, True)
+        
+        # Error handling
+        if isinstance(citation_class, str):
+            flash(citation_class)
+            return redirect("/add_citation")
         if not citation_class:
             flash("Citation type not found.")
             return redirect("/add_citation")
+        
         # Attempt to create citation and then display result
         result = create_citation(citation_class)
         if result:
             flash("Successfully added citation.")
             return redirect("/add_citation")
-#flash(result.get("error", "Failed to add citation. Please try again later."),"error") Commented away for testing
         flash("Failed to add citation. Please try again later.")
         return redirect("/add_citation")
     return "Invalid request method", 405

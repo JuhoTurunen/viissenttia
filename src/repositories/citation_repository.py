@@ -1,10 +1,15 @@
 from sqlalchemy import text
+from sqlalchemy.exc import DataError, IntegrityError, SQLAlchemyError
 from config import db
 from entities.citation import Article
 from util import citation_data_to_class
 
 
 def get_citations():
+    """
+    Get citations from database
+    :return: list of citation objects
+    """
     citations = db.session.execute(
         text(
             """
@@ -14,17 +19,24 @@ def get_citations():
             """
         )
     ).mappings()
-    return sorted(
-        [citation_data_to_class(dict(c)) for c in citations],
-        key=lambda x: x.created_at,
-        reverse=True,
-    )
+    
+    citation_classes = [result for c in citations if (result := citation_data_to_class(dict(c)))]
+
+    print(citation_classes)
+    if citation_classes:
+        return sorted(
+            citation_classes,
+            key=lambda x: x.created_at,
+            reverse=True,
+        )
+    else:
+        return citation_classes
 
 
 def create_citation(citation_class):
     """
     Insert citation into database.
-    :return: success message or raise error
+    :return: True if successful, False if not
     """
     try:
         # Insert to citation_base
@@ -33,7 +45,7 @@ def create_citation(citation_class):
             INSERT INTO citation_base (key, type, created_at)
             VALUES (:key, :type, :created_at)
             RETURNING id
-        """
+            """
         )
         result = db.session.execute(
             citation_base_sql,
@@ -71,9 +83,18 @@ def create_citation(citation_class):
 
         db.session.commit()
 
+    except DataError as e:  # Catches invalid values
+        db.session.rollback()
+        print(f"Data error: {e}")
+        return False
+    except IntegrityError as e:  # Catches missing keys and other constraint violations
+        db.session.rollback()
+        print(f"Integrity error: {e}")
+        return False
     except Exception as e:
         db.session.rollback()
-        print(e)
-        return False
+        print(f"Unexpected error: {e}")
+        # Raise fatal error if some other exception is encountered
+        raise
 
     return True
