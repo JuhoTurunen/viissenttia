@@ -35,9 +35,7 @@ Citation Manager
     {% for citation in citations %}
     <tr>
         <td>{{ citation.key }}</td>
-        <td>
-            {{citation.author|join(", ")}} 
-        </td>
+        <td>{{citation.author|join(", ")}}</td>
         <td>{{ citation.title }}</td>
         <td>{{ citation.journal }}</td>
         <td>{{ citation.year }}</td>
