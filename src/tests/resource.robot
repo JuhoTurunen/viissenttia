@@ -6,7 +6,6 @@ Library  ../app.py
 ${SERVER}     localhost:5001
 ${DELAY}      0.5 seconds
 ${HOME_URL}   http://${SERVER}
-${RESET_URL}  http://${SERVER}/reset_db
 ${BROWSER}    chrome
 ${HEADLESS}   false
 ${ADD_CITATION_URL}  http://${SERVER}/add_citation
@@ -25,10 +24,4 @@ Open And Configure Browser
         Set Selenium Speed  ${DELAY}
     END
     Open Browser  browser=${BROWSER}  options=${options}
-
-Reset App
-    Go To  ${RESET_URL}
-
-Go To Create a new
-    Go To    ${ADD_CITATION_URL}
 

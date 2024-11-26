@@ -2,7 +2,7 @@
 Resource  resource.robot
 Suite Setup      Open And Configure Browser
 Suite Teardown   Close Browser
-Test Setup       Reset App And Go To Add Citation Page
+Test Setup       Go To Add Citation Page
 
 *** Variables ***
 ${VALID_KEY}        testkey123
@@ -17,9 +17,6 @@ ${VALID_MONTH}      1
 ${VALID_NOTE}       Test note
 
 *** Keywords ***
-Reset App And Go To Add Citation Page
-    Reset App
-    Go To Add Citation Page
 
 Go To Add Citation Page
     Go To  ${HOME_URL}
