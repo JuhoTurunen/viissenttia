@@ -1,6 +1,7 @@
 form {
+    width: 35em;
     min-width: max-content;
-    max-width: 30%;
+    max-width: 90%;
     padding: 1em;
     margin: 2em auto;
     font-size: 1.1em;
@@ -33,6 +34,29 @@ form div {
     overflow: hidden;
 }
 
+#authors label, #authors input {
+    margin-bottom: 0.2em;
+}
+
+#add_author {
+    display: block;
+    width: 50%;
+    margin-bottom: 1em;
+    border: none;
+    clear: both;
+    float: right;
+    font-size: 1.1em;
+    background-color: transparent;
+}
+
+
+#add_author b {
+    display: inline-block;
+    font-size: 1.4em;
+    translate: 0 0.1em;
+    font-weight: 600;
+}
+
 #opt_btn {
     display: block;
     margin: 0 auto 1em auto;
@@ -42,7 +66,7 @@ form div {
     background-color: transparent;
 }
 
-#opt_btn:hover {
+button:hover {
     font-weight: 600;
 }
 
