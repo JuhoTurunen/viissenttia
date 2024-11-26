@@ -1,9 +1,6 @@
 from sqlalchemy import text
-<<<<<<< HEAD
 from config import db
-=======
 from sqlalchemy.exc import SQLAlchemyError
->>>>>>> cce215a (Improved exception handling)
 from entities.citation import Article
 from util import citation_data_to_class
 
