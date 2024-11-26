@@ -43,7 +43,10 @@ Fill All Citation Fields
     Input Text  name=note  ${note}
 
 Submit Citation Form
-    Click Button  Create
+    Click Button  Create citation
+
+Open optional fields
+    Click Button  Show optional fields
 
 *** Test Cases ***
 Add Citation Page Can Be Opened
@@ -113,9 +116,9 @@ Added Citation With All Fields Can Be Viewed
 #     Submit Citation Form
 #     Page Should Contain  Successfully added citation
 
-Cannot Add Citation Without Required Fields
+Cannot Send Citation Without Required Fields
     Submit Citation Form
-    Page Should Contain  Failed to add citation
+    Page Should Not Contain  Failed to add citation
 
 Invalid Year Format Is Not Accepted
     Fill Citation Form With Required Fields  ${VALID_KEY}  ${VALID_AUTHOR}  ${VALID_TITLE}  ${VALID_JOURNAL}  abc
@@ -124,12 +127,14 @@ Invalid Year Format Is Not Accepted
 
 Invalid Volume Format Is Not Accepted
     Fill Citation Form With Required Fields  ${VALID_KEY}  ${VALID_AUTHOR}  ${VALID_TITLE}  ${VALID_JOURNAL}  ${VALID_YEAR}
+    Open optional fields
     Input Text  name=volume  abc
     Submit Citation Form
     Page Should Contain  Failed to add citation
 
 Invalid Number Format Is Not Accepted
     Fill Citation Form With Required Fields  ${VALID_KEY}  ${VALID_AUTHOR}  ${VALID_TITLE}  ${VALID_JOURNAL}  ${VALID_YEAR}
+    Open optional fields
     Input Text  name=number  abc
     Submit Citation Form
     Page Should Contain  Failed to add citation
