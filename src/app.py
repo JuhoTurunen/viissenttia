@@ -4,14 +4,13 @@ from config import app
 from util import citation_data_to_class, citation_class_to_bibtex_file
 
 
-
-
 @app.route("/")
 def index():
     citations = get_citations()
     return render_template("index.html", citations=citations)
 
-@app.route("/add_citation", methods=["POST","GET"])
+
+@app.route("/add_citation", methods=["POST", "GET"])
 def add_citation():
     # Code for displaying add_citation page
     if request.method == "GET":
@@ -36,9 +35,10 @@ def add_citation():
         return redirect("/add_citation")
     return "Invalid request method", 405
 
-@app.route('/download')
+
+@app.route("/download")
 def download():
     citations = get_citations()
     citation_class_to_bibtex_file(citations)
-    path = './bibtex_files/citations.bib'
+    path = "./bibtex_files/citations.bib"
     return send_file(path, as_attachment=True)

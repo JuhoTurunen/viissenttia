@@ -22,10 +22,10 @@ class Validator:
         try:
             if value is not None:
                 expected(value)
-        except Exception:
+        except Exception as e:
             raise ValidationError(
                 f"Field {key} expects {convert_type(expected)}, received {convert_type(type(value))}"
-            )
+            ) from e
         return value
 
 

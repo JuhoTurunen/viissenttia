@@ -1,6 +1,6 @@
 [MASTER]
 
-ignore=tests,template,static,bibtex_files,citation.py,util.py
+ignore=tests,template,static,bibtex_files,citation.py
 
 [MESSAGE CONTROL]
 
@@ -15,6 +15,7 @@ disable=raw-checker-failed,
         missing-module-docstring,
         missing-function-docstring,
         missing-class-docstring
+        too-few-public-methods
 
 [FORMAT]
 max-line-length=120

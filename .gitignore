@@ -1,7 +1,7 @@
 .venv 
 .env
 __pycache__
-bibtex_files
+bibtex_files/
 *.log
 log.html
 output.xml
