@@ -120,18 +120,18 @@ Cannot Send Citation Without Required Fields
 Invalid Year Format Is Not Accepted
     Fill Citation Form With Required Fields  ${VALID_KEY}  ${VALID_AUTHOR}  ${VALID_TITLE}  ${VALID_JOURNAL}  abc
     Submit Citation Form
-    Page Should Contain  Failed to add citation
+    Page Should Contain  Field year expects a number, received text
 
 Invalid Volume Format Is Not Accepted
     Fill Citation Form With Required Fields  ${VALID_KEY}  ${VALID_AUTHOR}  ${VALID_TITLE}  ${VALID_JOURNAL}  ${VALID_YEAR}
     Open optional fields
     Input Text  name=volume  abc
     Submit Citation Form
-    Page Should Contain  Failed to add citation
+    Page Should Contain  Field volume expects a number, received text
 
 Invalid Number Format Is Not Accepted
     Fill Citation Form With Required Fields  ${VALID_KEY}  ${VALID_AUTHOR}  ${VALID_TITLE}  ${VALID_JOURNAL}  ${VALID_YEAR}
     Open optional fields
     Input Text  name=number  abc
     Submit Citation Form
-    Page Should Contain  Failed to add citation
+    Page Should Contain  Field number expects a number, received text
