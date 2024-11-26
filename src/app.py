@@ -20,7 +20,6 @@ def add_citation():
     if request.method == "POST":
         # Turn citation form into a citation class
         citation_class = citation_data_to_class(request.form, True)
-        
         # Error handling
         if isinstance(citation_class, str):
             flash(citation_class)
@@ -28,7 +27,6 @@ def add_citation():
         if not citation_class:
             flash("Citation type not found.")
             return redirect("/add_citation")
-        
         # Attempt to create citation and then display result
         result = create_citation(citation_class)
         if result:
