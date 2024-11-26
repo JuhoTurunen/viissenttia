@@ -14,15 +14,20 @@ Array.prototype.forEach.call(input_fields, input_field => {
     });
 });
 
+let author_bth = document.getElementById('add_author');
+author_bth.addEventListener("click", () => {
+    author_field = document. createElement("textarea");
+    author_field.rows = "1";
+    author_field.name = "author[]";
+    author_bth.parentElement.insertBefore(author_field, author_bth);
+});
 
 let opt_btn = document.getElementById('opt_btn');
-opt_btn.addEventListener("click", opt_field_revealer);
-
-function opt_field_revealer() {
+opt_btn.addEventListener("click", () => {
     let opt_contianer_classlist = opt_btn.parentElement.classList;
     if (opt_contianer_classlist.contains("hidden")) {
         opt_contianer_classlist.remove("hidden")
     } else {
         opt_contianer_classlist.add("hidden")
     }
-}
+});

@@ -39,9 +39,15 @@ form div {
     clear: both;
     overflow: hidden;
 }
-
-#authors label, #authors textarea {
+#authors label {
     margin-bottom: 0.2em;
+    clear: unset;
+}
+
+#authors textarea {
+    margin-bottom: 0.2em;
+    float: right;
+    clear: right;
 }
 
 #add_author {
