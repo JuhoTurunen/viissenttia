@@ -82,6 +82,7 @@ def create_citation(citation_class):
             )
 
         db.session.commit()
+        return True
 
     except DataError as e:  # Catches invalid values
         db.session.rollback()
@@ -97,4 +98,3 @@ def create_citation(citation_class):
         # Raise fatal error if some other exception is encountered
         raise
 
-    return True
