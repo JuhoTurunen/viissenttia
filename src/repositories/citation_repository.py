@@ -1,5 +1,5 @@
-from config import db
 from sqlalchemy import text
+from config import db
 from entities.citation import Article
 from util import citation_data_to_class
 
