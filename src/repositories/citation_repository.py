@@ -1,6 +1,6 @@
+import json
 from sqlalchemy import text
 from sqlalchemy.exc import DataError, IntegrityError, SQLAlchemyError
-import json
 from config import db
 from entities.citation import Article
 from util import citation_data_to_class
