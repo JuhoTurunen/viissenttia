@@ -22,11 +22,17 @@ label {
     clear: left;
 }
 
-input, select {
+textarea, select {
     width: 50%;
     margin-bottom: 1em;
     font-size: 1.1em;
     float: left;
+}
+
+textarea {
+    min-height: 30px;
+    resize: none;
+    overflow: hidden;
 }
 
 form div {
@@ -34,7 +40,7 @@ form div {
     overflow: hidden;
 }
 
-#authors label, #authors input {
+#authors label, #authors textarea {
     margin-bottom: 0.2em;
 }
 
@@ -87,7 +93,7 @@ button:hover {
     transform: translate(80%, 45%) rotate(45deg);
 }
 
-.hidden label, .hidden input {
+.hidden label, .hidden textarea {
     display: none;
 }
 
