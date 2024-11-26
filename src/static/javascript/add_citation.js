@@ -18,7 +18,7 @@ let author_bth = document.getElementById('add_author');
 author_bth.addEventListener("click", () => {
     author_field = document. createElement("textarea");
     author_field.rows = "1";
-    author_field.name = "author[]";
+    author_field.name = "authors";
     author_bth.parentElement.insertBefore(author_field, author_bth);
 });
 

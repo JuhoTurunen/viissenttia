@@ -1,4 +1,5 @@
 import os.path
+import json
 from entities.citation import Article
 
 
@@ -7,16 +8,23 @@ class ValidationError(Exception):
 
 
 def convert_type(type_class):
-    types = {"a number": int, "text": str}
+    types = {"a number": int, "text": str, "a list": list}
     return next((k for k, v in types.items() if v is type_class), str(type_class))
 
 
 class Validator:
-    def __init__(self, form):
+    def __init__(self, form, front_facing):
         self.form = form
+        self.front_facing = front_facing
 
     def check(self, key, expected, required=False):
-        value = self.form.get(key) or None
+        if self.front_facing and expected is list:
+            value = self.form.getlist(key) or None
+            print(value)
+        elif expected is list:
+            value = self.form.get(key) or None
+        else:
+            value = self.form.get(key) or None
         if required and value is None:
             raise ValidationError(f"Field {key} is required")
         try:
@@ -31,16 +39,18 @@ class Validator:
 
 def citation_data_to_class(form, front_facing=False):
     result = None
-    validator = Validator(form)
+    validator = Validator(form, front_facing)
 
     try:
         if form.get("type") == "article":
+            article_authors = validator.check("authors", list, True) 
+            year=validator.check("year", int, True)
             result = Article(
-                key=validator.check("key", str, False),
-                author=validator.check("author", str, True),
+                authors=article_authors,
                 title=validator.check("title", str, True),
                 journal=validator.check("journal", str, True),
-                year=validator.check("year", int, True),
+                year=year,
+                key=f"{article_authors[0].split()[-1]}{year}",
                 created_at=validator.check("created_at", str),
                 volume=validator.check("volume", int),
                 number=validator.check("number", int),

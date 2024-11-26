@@ -26,10 +26,7 @@ def add_citation():
         if not citation_class:
             flash("Citation type not found.")
             return redirect("/add_citation")
-        # Generating the key based on last name and year
-        author_last_name = citation_class.author.split()[-1]  # Get last name
-        year = citation_class.year
-        base_key = f"{author_last_name}{year}"
+        base_key = citation_class.key
         #Finding the maximum suffix for the key
         existing_citations = get_citations()
         existing_keys = {citation.key for citation in existing_citations}
