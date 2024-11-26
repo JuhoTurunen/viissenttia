@@ -19,18 +19,14 @@ def get_citations():
             """
         )
     ).mappings()
-    
+
     citation_classes = [result for c in citations if (result := citation_data_to_class(dict(c)))]
 
-    print(citation_classes)
-    if citation_classes:
-        return sorted(
-            citation_classes,
-            key=lambda x: x.created_at,
-            reverse=True,
-        )
-    else:
-        return citation_classes
+    return sorted(
+        citation_classes,
+        key=lambda x: x.created_at,
+        reverse=True,
+    )
 
 
 def create_citation(citation_class):
@@ -97,4 +93,3 @@ def create_citation(citation_class):
         print(f"Unexpected error: {e}")
         # Raise fatal error if some other exception is encountered
         raise
-
