@@ -1,6 +1,7 @@
 form {
-    min-width: max-content;
-    max-width: 30%;
+    min-width: 300px;
+    max-width: 800px;
+    width: 100%;
     padding: 1em;
     margin: 2em auto;
     font-size: 1.1em;
@@ -22,10 +23,11 @@ label {
 }
 
 input, select {
-    width: 50%;
+    width: 100%; /* Full width of the parent container */
     margin-bottom: 1em;
     font-size: 1.1em;
-    float: left;
+    padding: 0.5em; /* Add some padding for better usability */
+    box-sizing: border-box; /* Include padding in width calculation */
 }
 
 form div {
