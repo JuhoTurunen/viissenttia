@@ -1,6 +1,6 @@
 [MASTER]
 
-ignore=tests,template,static,bibtex_files
+ignore=tests,template,static,bibtex_files,citation.py,util.py
 
 [MESSAGE CONTROL]
 
