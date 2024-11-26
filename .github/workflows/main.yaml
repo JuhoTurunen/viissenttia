@@ -33,5 +33,5 @@ jobs:
         run: poetry run pylint src/        
       - name: Run robot tests
         run: bash run_robot_tests.sh
-      - name: Run tests
+      - name: Run unittests
         run: poetry run coverage run --branch -m pytest
