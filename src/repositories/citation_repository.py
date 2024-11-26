@@ -88,6 +88,10 @@ def create_citation(citation_class):
         db.session.rollback()
         print(f"Integrity error: {e}")
         return False
+    except SQLAlchemyError as e:  # Catches other database errors
+        db.session.rollback()
+        print(f"Database error: {e}")
+        return False
     except Exception as e:
         db.session.rollback()
         print(f"Unexpected error: {e}")
