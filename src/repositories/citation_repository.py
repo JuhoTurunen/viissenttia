@@ -1,6 +1,6 @@
 from sqlalchemy import text
-from config import db
 from sqlalchemy.exc import SQLAlchemyError
+from config import db
 from entities.citation import Article
 from util import citation_data_to_class
 
@@ -79,6 +79,6 @@ def create_citation(citation_class):
         db.session.rollback()
         print(f"Error occurred: {e}")
         return False
-    
+
     db.session.commit()
     return True
