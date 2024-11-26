@@ -72,7 +72,7 @@ def create_citation(citation_class):
         db.session.commit()
 
     except Exception as e:
-        db.session.rollback
+        db.session.rollback()
         print(e)
         return False
 
