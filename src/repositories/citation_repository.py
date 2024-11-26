@@ -58,15 +58,15 @@ def create_citation(citation_class):
         if isinstance(citation_class, Article):
             article_sql = text(
                 """
-                INSERT INTO articles (citation_id, authors, title, journal, year, volume, number, pages, month, note)
-                VALUES (:citation_id, :authors, :title, :journal, :year, :volume, :number, :pages, :month, :note)
+                INSERT INTO articles (citation_id, author, title, journal, year, volume, number, pages, month, note)
+                VALUES (:citation_id, :author, :title, :journal, :year, :volume, :number, :pages, :month, :note)
                 """
             )
             db.session.execute(
                 article_sql,
                 {
                     "citation_id": citation_base_id,
-                    "authors": json.dumps(citation_class.authors),
+                    "author": json.dumps(citation_class.author),
                     "title": citation_class.title,
                     "journal": citation_class.journal,
                     "year": citation_class.year,

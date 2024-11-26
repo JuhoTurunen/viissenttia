@@ -11,7 +11,7 @@ class Article(CitationBase):
     def __init__(
         self,
         key,
-        authors,
+        author,
         title,
         journal,
         year,
@@ -26,7 +26,7 @@ class Article(CitationBase):
         super().__init__(key=key, citation_type="article", created_at=created_at)
 
         # Initialize specific attributes for the Article class
-        self.authors = authors
+        self.author = author
         self.title = title
         self.journal = journal
         self.year = year
@@ -38,7 +38,7 @@ class Article(CitationBase):
 
     def __str__(self):
         return (
-            f"Article(key={self.key}, author={self.authors}, title={self.title}, "
+            f"Article(key={self.key}, author={self.author}, title={self.title}, "
             f"journal={self.journal}, year={self.year}, volume={self.volume}, "
             f"number={self.number}, pages={self.pages}, month={self.month}, "
             f"note={self.note}, created_at={self.created_at})"

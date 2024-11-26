@@ -40,10 +40,10 @@ def citation_data_to_class(form, front_facing=False):
 
     try:
         if form.get("type") == "article":
-            article_authors = validator.check("authors", list, True) 
+            article_authors = validator.check("author", list, True) 
             year=validator.check("year", int, True)
             result = Article(
-                authors=article_authors,
+                author=article_authors,
                 title=validator.check("title", str, True),
                 journal=validator.check("journal", str, True),
                 year=year,
