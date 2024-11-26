@@ -5,7 +5,7 @@ Suite Teardown   Close Browser
 Test Setup       Go To Add Citation Page
 
 *** Variables ***
-${VALID_KEY}        testkey123
+${VALID_KEY}        Author2023
 ${VALID_AUTHOR}     Test Author
 ${VALID_TITLE}      Test Title
 ${VALID_JOURNAL}    Test Journal
