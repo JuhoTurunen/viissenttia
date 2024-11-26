@@ -36,7 +36,7 @@ def citation_data_to_class(form, front_facing=False):
     try:
         if form.get("type") == "article":
             result = Article(
-                key=validator.check("key", str, True),
+                key=validator.check("key", str, False),
                 author=validator.check("author", str, True),
                 title=validator.check("title", str, True),
                 journal=validator.check("journal", str, True),
