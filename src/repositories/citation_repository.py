@@ -1,5 +1,9 @@
 from sqlalchemy import text
+<<<<<<< HEAD
 from config import db
+=======
+from sqlalchemy.exc import SQLAlchemyError
+>>>>>>> cce215a (Improved exception handling)
 from entities.citation import Article
 from util import citation_data_to_class
 
@@ -69,11 +73,15 @@ def create_citation(citation_class):
                 },
             )
 
-        db.session.commit()
+    except SQLAlchemyError as e:
+        db.session.rollback()
+        print(f"Error occurred: {e}")
+        return False
 
     except Exception as e:
         db.session.rollback()
-        print(e)
+        print(f"Error occurred: {e}")
         return False
-
+    
+    db.session.commit()
     return True
