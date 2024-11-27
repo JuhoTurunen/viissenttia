@@ -14,4 +14,9 @@ Process:
 
 ### Development measures
 
-(Goal: Identify at least 2 things where the team will aspire to do better in the next sprint)
+Development measures where the team will aspire to do better in the next sprint
+
+- Stop: Moving on to code a new thing/feature if tests fail.
+- Continue: Continue focusing on things that bring the cutomer most value. 
+- More of: Communicating more on who will take on previously unallocated tasks (like hotfixes), so that there is no overlapping work done by team members.
+- Less of: Dividing tasks last-minute, so that the division is more clear and risk of confusion is diminished. 
