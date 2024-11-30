@@ -1,5 +1,5 @@
 import os.path
-from entities.citation import Article
+from entities.citation import CitationBase, Article
 
 
 class ValidationError(Exception):
@@ -60,6 +60,9 @@ def citation_data_to_class(form, front_facing=False):
 
     return result
 
+
+def get_citation_types():
+    return [citation_type.__name__.lower() for citation_type in CitationBase.__subclasses__()]
 
 def citation_class_to_bibtex_file(citation_list):
     curly_brace_open = "{"

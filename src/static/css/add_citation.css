@@ -39,18 +39,18 @@ form div {
     clear: both;
     overflow: hidden;
 }
-#authors label {
+.multiple label {
     margin-bottom: 0.2em;
     clear: unset;
 }
 
-#authors textarea {
+.multiple textarea {
     margin-bottom: 0.2em;
     float: right;
     clear: right;
 }
 
-#add_author {
+.multiple button {
     display: block;
     width: 50%;
     margin-bottom: 1em;
@@ -62,7 +62,7 @@ form div {
 }
 
 
-#add_author b {
+.multiple button b {
     display: inline-block;
     font-size: 1.4em;
     translate: 0 0.1em;
@@ -99,7 +99,7 @@ button:hover {
     transform: translate(80%, 45%) rotate(45deg);
 }
 
-.hidden label, .hidden textarea {
+.hidden label, .hidden textarea, .hidden button {
     display: none;
 }
 

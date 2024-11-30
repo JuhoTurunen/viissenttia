@@ -43,3 +43,9 @@ class Article(CitationBase):
             f"number={self.number}, pages={self.pages}, month={self.month}, "
             f"note={self.note}, created_at={self.created_at})"
         )
+
+class Inproceedings(CitationBase):
+    def __init__():
+        pass
+    def __str__(self):
+        pass
