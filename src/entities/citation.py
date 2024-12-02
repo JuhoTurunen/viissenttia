@@ -84,7 +84,51 @@ class Book(CitationBase):
 
 
 class Inproceedings(CitationBase):
-    def __init__():
-        pass
+    def __init__(
+        self,
+        key,
+        author,
+        title,
+        booktitle,
+        year,
+        editor=None,
+        created_at=None,
+        number=None,
+        volume=None,
+        series=None,
+        pages=None,
+        address=None,
+        month=None,
+        organization=None,
+        edition=None,
+        publisher=None,
+        note=None,
+    ):
+        # Call CitationBase class __init__
+        super().__init__(key=key, citation_type="inproceedings", created_at=created_at)
+
+        # Initialize specific attributes for the Inproceedings class
+        self.author = author
+        self.title = title
+        self.booktitle=booktitle
+        self.year = year
+        self.editor=editor
+        self.number=number
+        self.volume = volume
+        self.series = series
+        self.pages=pages
+        self.address = address
+        self.month=month
+        self.organization=organization
+        self.edition = edition
+        self.publisher = publisher
+        self.note = note
+
     def __str__(self):
-        pass
+        return (
+            f"Inproceedings(key={self.key}, author={self.author}, title={self.title}, booktitle={self.booktitle}, "
+            f"year={self.year}, editor={self.editor}, number={self.number}, "
+            f"volume={self.volume}, series={self.series}, pages={self.pages}, "
+            f"address={self.address}, month={self.month}, organization={self.organization}, "
+            f"edition={self.edition},publisher={self.publisher} note={self.note}, created_at={self.created_at})"
+        )
