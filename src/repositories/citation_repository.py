@@ -2,8 +2,8 @@ import json
 from sqlalchemy import text
 from sqlalchemy.exc import DataError, IntegrityError, SQLAlchemyError
 from config import db
-from entities.citation import Article
-from util import citation_data_to_class
+from entities.citation import Article, Inproceedings, Book
+from util import citation_data_to_class,sql_insert_writer
 
 
 def get_citations():
@@ -54,29 +54,16 @@ def create_citation(citation_class):
         )
         citation_base_id = result.fetchone()[0]
 
-        # Insert to articles
-        if isinstance(citation_class, Article):
-            article_sql = text(
-                """
-                INSERT INTO articles (citation_id, author, title, journal, year, volume, number, pages, month, note)
-                VALUES (:citation_id, :author, :title, :journal, :year, :volume, :number, :pages, :month, :note)
-                """
-            )
-            db.session.execute(
-                article_sql,
-                {
-                    "citation_id": citation_base_id,
-                    "author": json.dumps(citation_class.author),
-                    "title": citation_class.title,
-                    "journal": citation_class.journal,
-                    "year": citation_class.year,
-                    "volume": citation_class.volume if citation_class.volume else None,
-                    "number": citation_class.number if citation_class.number else None,
-                    "pages": citation_class.pages if citation_class.pages else None,
-                    "month": citation_class.month if citation_class.month else None,
-                    "note": citation_class.note if citation_class.note else None,
-                },
-            )
+        citation_dict=vars(citation_class)
+        citation_dict["citation_id"]=citation_base_id
+        citation_dict["author"]=json.dumps(citation_class.author)
+        
+        sql_command=text(sql_insert_writer(citation_class.type,citation_dict))
+
+        db.session.execute(
+            sql_command,
+            citation_dict,
+        )
 
         db.session.commit()
         return True

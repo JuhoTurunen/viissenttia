@@ -89,3 +89,19 @@ def citation_class_to_bibtex_file(citation_list):
                 if key not in banned_keys and value:
                     bibtex.write(f"{tab}{key} = {{{value}}},\n")
             bibtex.write(curly_brace_close + "\n")
+
+
+def sql_insert_writer(type,citation_dictionary):
+    tables={"article":"articles","book":"books","inproceedings":"inproceedings"}
+    table=tables[type]
+    banned_keys={"created_at", "type", "key"}
+    keys=""
+    values=""
+    for key in citation_dictionary:
+        if key not in banned_keys:
+            keys+=f"{key}, "
+            values+=f":{key}, "
+    keys=keys[:-2]
+    values=values[:-2]
+    insert_command=f"INSERT INTO {table} ({keys}) VALUES ({values})"
+    return insert_command
