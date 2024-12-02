@@ -91,9 +91,9 @@ def citation_class_to_bibtex_file(citation_list):
             bibtex.write(curly_brace_close + "\n")
 
 
-def sql_insert_writer(type,citation_dictionary):
+def sql_insert_writer(citation_type,citation_dictionary):
     tables={"article":"articles","book":"books","inproceedings":"inproceedings"}
-    table=tables[type]
+    table=tables[citation_type]
     banned_keys={"created_at", "type", "key"}
     keys=""
     values=""
