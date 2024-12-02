@@ -2,7 +2,7 @@ import json
 from sqlalchemy import text
 from sqlalchemy.exc import DataError, IntegrityError, SQLAlchemyError
 from config import db
-from util import citation_data_to_class,sql_insert_writer
+from util import citation_data_to_class, sql_insert_writer
 
 
 def get_citations():
@@ -14,8 +14,8 @@ def get_citations():
         text(
             """
             SELECT * FROM citation_base 
-            INNER JOIN articles 
-            ON citation_base.id = articles.citation_id
+            INNER JOIN article
+            ON citation_base.id = article.citation_id
             """
         )
     ).mappings()
@@ -53,11 +53,11 @@ def create_citation(citation_class):
         )
         citation_base_id = result.fetchone()[0]
 
-        citation_dict=vars(citation_class)
-        citation_dict["citation_id"]=citation_base_id
+        citation_dict = vars(citation_class)
+        citation_dict["citation_id"] = citation_base_id
         citation_dict["author"] = json.dumps(citation_class.author)
 
-        sql_command = text(sql_insert_writer(citation_class.type,citation_dict))
+        sql_command = text(sql_insert_writer(citation_class.type, citation_dict))
 
         db.session.execute(
             sql_command,

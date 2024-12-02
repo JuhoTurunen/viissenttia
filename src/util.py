@@ -64,6 +64,7 @@ def citation_data_to_class(form, front_facing=False):
 def get_citation_types():
     return [citation_type.__name__.lower() for citation_type in CitationBase.__subclasses__()]
 
+
 def citation_class_to_bibtex_file(citation_list):
     curly_brace_open = "{"
     curly_brace_close = "}"
@@ -75,7 +76,7 @@ def citation_class_to_bibtex_file(citation_list):
             citation_type = citation_dict.get("type")
             citation_key = citation_dict.get("key")
             tab = "\t"
-            authors=""
+            authors = ""
             bibtex.write(f"@{citation_type}")
             bibtex.write(curly_brace_open)
             bibtex.write(f"{citation_key},\n")
@@ -84,24 +85,22 @@ def citation_class_to_bibtex_file(citation_list):
                     for author in value:
                         if author:
                             authors += author + " and "
-                    authors=authors[:-5]
-                    value=authors
+                    authors = authors[:-5]
+                    value = authors
                 if key not in banned_keys and value:
                     bibtex.write(f"{tab}{key} = {{{value}}},\n")
             bibtex.write(curly_brace_close + "\n")
 
 
-def sql_insert_writer(citation_type,citation_dictionary):
-    tables={"article":"articles","book":"books","inproceedings":"inproceedings"}
-    table=tables[citation_type]
-    banned_keys={"created_at", "type", "key"}
-    keys=""
-    values=""
+def sql_insert_writer(table, citation_dictionary):
+    banned_keys = {"created_at", "type", "key"}
+    keys = ""
+    values = ""
     for key in citation_dictionary:
         if key not in banned_keys:
-            keys+=f"{key}, "
-            values+=f":{key}, "
-    keys=keys[:-2]
-    values=values[:-2]
-    insert_command=f"INSERT INTO {table} ({keys}) VALUES ({values})"
+            keys += f"{key}, "
+            values += f":{key}, "
+    keys = keys[:-2]
+    values = values[:-2]
+    insert_command = f"INSERT INTO {table} ({keys}) VALUES ({values})"
     return insert_command
