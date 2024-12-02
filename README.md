@@ -39,6 +39,9 @@ The product and sprint backlogs can be found [here](https://helsinkifi-my.sharep
 
 [![GHA workflow badge](https://github.com/JuhoTurunen/viissenttia/actions/workflows/main.yaml/badge.svg)](https://github.com/JuhoTurunen/viissenttia/actions)
 
+## Test coverage
+
+[![codecov](https://codecov.io/gh/JuhoTurunen/viissenttia/graph/badge.svg?token=UU1SYQDT8W)](https://codecov.io/gh/JuhoTurunen/viissenttia)
 
 ## Testing the application
 
