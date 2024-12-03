@@ -20,6 +20,7 @@ function load_dynamics() {
             const multiple_input = multiple_container.getElementsByTagName("textarea")[0];
             let input_clone = multiple_input.cloneNode();
             input_clone.value = "";
+            input_clone.required = false;
             multiple_container.insertBefore(input_clone, multiple_button);
         });
     });

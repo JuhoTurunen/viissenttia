@@ -18,7 +18,7 @@ class Validator:
 
     def check(self, key, expected, required=False):
         if self.front_facing and expected is list:
-            value = self.form.getlist(key) or None
+            value = [value for value in self.form.getlist(key) if value] or None
         else:
             value = self.form.get(key) or None
         if required and value is None:
