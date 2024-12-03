@@ -1,5 +1,5 @@
 import os.path
-from entities.citation import CitationBase, Article
+from entities.citation import CitationBase, Article, Book, Inproceedings, Manual
 
 
 class ValidationError(Exception):
@@ -53,6 +53,58 @@ def citation_data_to_class(form, front_facing=False):
                 pages=validator.check("pages", str),
                 month=validator.check("month", int),
                 note=validator.check("note", str),
+            )
+        elif form.get("type") == "book":
+            book_authors = validator.check("author", list, True)
+            year = validator.check("year", int, True)
+            result = Book(
+                author=book_authors,
+                title=validator.check("title", str, True),
+                publisher=validator.check("publisher", str, True),
+                year=year,
+                key=f"{book_authors[0].split()[-1]}{year}",
+                created_at=validator.check("created_at", str),
+                edition=validator.check("edition",str),
+                volume=validator.check("volume", int),
+                series=validator.check("series",str),
+                address=validator.check("address", str),
+                note=validator.check("note", str),
+            )
+        elif form.get("type") == "inproceedings":
+            book_authors = validator.check("author", list, True)
+            year = validator.check("year", int, True)
+            result = Inproceedings(
+                author=book_authors,
+                title=validator.check("title", str, True),
+                booktitle=validator.check("booktitle",str, True),
+                year=year,
+                key=f"{book_authors[0].split()[-1]}{year}",
+                created_at=validator.check("created_at", str),
+                editor=validator.check("editor",str),
+                edition=validator.check("edition",str),
+                volume=validator.check("volume", int),
+                series=validator.check("series",str),
+                pages=validator.check("pages", str),
+                address=validator.check("address", str),
+                organization=validator.check("organization",str),
+                publisher=validator.check("publisher", str),
+                note=validator.check("note", str),
+            )
+        elif form.get("type") == "manual":
+            manual_authors = validator.check("author", list, True)
+            year = validator.check("year", int, True)
+            result = Manual(
+                author=manual_authors,
+                title=validator.check("title", str, True),
+                organization=validator.check("organization",str,True),
+                year=year,
+                key=f"{manual_authors[0].split()[-1]}{year}",
+                created_at=validator.check("created_at", str),
+                edition=validator.check("edition",str),
+                address=validator.check("address", str),
+                month=validator.check("month", int),
+                note=validator.check("note", str),
+                annote=validator.check("annote", str),
             )
     except ValidationError as e:
         print(e.args[0])
