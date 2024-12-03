@@ -74,7 +74,7 @@ h2 {
     margin-right: auto;
     background-color: white;
     border: 2px solid black;
-    box-shadow: 2px 4px 0px 1px rgba(0, 0, 0, 0.521);
+    box-shadow: 2px 3px 0px 1px rgba(0, 0, 0, 0.221);
     position: absolute;
     z-index: 2;
 }
