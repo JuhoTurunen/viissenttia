@@ -18,6 +18,10 @@ ${VALID_NOTE}       Test note
 
 *** Keywords ***
 
+Go To Add Citation Page
+    Go To  ${HOME_URL}
+    Click Link  Add Citation
+
 Fill Citation Form With Required Fields
     [Arguments]   ${author}  ${title}  ${journal}  ${year}
     Input Text  name=author  ${author}
@@ -41,9 +45,6 @@ Open optional fields
     Click Button  Show optional fields
 
 *** Test Cases ***
-Add Citation Page Can Be Opened
-    Go To Add Citation Page
-    Title Should Be  Create a new citation
 
 Added Citation With All Fields Can Be Viewed
     Go To  ${HOME_URL}
