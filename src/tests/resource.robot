@@ -17,7 +17,7 @@ Open And Configure Browser
         ${options}  Evaluate  sys.modules['selenium.webdriver'].FirefoxOptions()  sys
     END
     IF  $HEADLESS == 'true'
-        Set Selenium Speed  0
+        Set Selenium Speed  0.1
         Call Method  ${options}  add_argument  --headless
     ELSE
         Set Selenium Speed  ${DELAY}
