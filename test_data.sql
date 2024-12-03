@@ -1,4 +1,4 @@
--- Create tables citation_base and article
+-- Create tables citation_base, article, book, manual
 CREATE TABLE citation_base (
     id SERIAL PRIMARY KEY,
     key VARCHAR(30) NOT NULL,
@@ -34,6 +34,20 @@ CREATE TABLE book (
     CONSTRAINT fk_citation_base FOREIGN KEY (citation_id) REFERENCES citation_base(id)
 );
 
+CREATE TABLE manual (
+    citation_id INT PRIMARY KEY,
+    author TEXT NOT NULL,
+    title TEXT NOT NULL,
+    organization TEXT NOT NULL,
+    year INT NOT NULL,
+    address TEXT,
+    edition TEXT,
+    month TEXT,
+    note TEXT,
+    annote TEXT,
+    CONSTRAINT fk_citation_base FOREIGN KEY (citation_id) REFERENCES citation_base(id)
+);
+
 -- Add test data: Articles (4)
 INSERT INTO citation_base (key, type) VALUES ('Miller2024-1', 'article');
 INSERT INTO article (citation_id, author, title, journal, year, volume, number, pages, month, note) 
@@ -53,9 +67,14 @@ VALUES (4, 'David Taylor', 'Understanding Data Science: Principles and Applicati
 
 -- Add test data: Books (2)
 INSERT INTO citation_base (key, type) VALUES ('Fisher1995-1', 'book');
-INSERT INTO books (citation_id, author, title, year, publisher, address) 
+INSERT INTO book (citation_id, author, title, year, publisher, address) 
 VALUES (5, 'Yuval Fisher', 'Fractal Image Comression: Theory and Application', 1995, 'Springer Verlag', 'New York');
 
 INSERT INTO citation_base (key, type) VALUES ('Knuth1973-1', 'book');
-INSERT INTO books (citation_id, author, title, year, publisher, address, edition, note) 
+INSERT INTO book (citation_id, author, title, year, publisher, address, edition, note) 
 VALUES (6, 'Donald E. Knuth', 'The art of computer programming', 1973, 'Addison-Wesley', 'Reading, Massachusetts', 3, 'the book is still incomplete');
+
+-- Add test data: Manual (1)
+INSERT INTO citation_base (key, type) VALUES ('Thorlabs2015-1', 'manual');
+INSERT INTO manual (citation_id, author, title, organization, year) 
+VALUES (7, 'Thorlabs', 'Position Sensing Detector User Guide', 'Thorlabs', 2015);
