@@ -41,11 +41,10 @@ h2 {
 
 
 .citation_brief:hover {
-    scale: 1.03;
     background-color: white;
-    border: 1px solid black;
+    outline: 2px solid black;
     box-shadow: 2px 1px 0px 1px rgba(0, 0, 0, 0.309);
-    font-weight: 600;
+    scale: 1.02;
 }
 
 .citation_brief span {
