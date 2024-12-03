@@ -18,10 +18,6 @@ ${VALID_NOTE}       Test note
 
 *** Keywords ***
 
-Go To Add Citation Page
-    Go To  ${HOME_URL}
-    Click Link  Add Citation
-
 Fill Citation Form With Required Fields
     [Arguments]   ${author}  ${title}  ${journal}  ${year}
     Input Text  name=author  ${author}
@@ -49,26 +45,6 @@ Add Citation Page Can Be Opened
     Go To Add Citation Page
     Title Should Be  Create a new citation
 
-# Can Add Valid Article Citation With Required Fields
-#     Fill Citation Form With Required Fields  ${VALID_KEY}  ${VALID_AUTHOR}  ${VALID_TITLE}  ${VALID_JOURNAL}  ${VALID_YEAR}
-#     Submit Citation Form
-#     Page Should Contain  Successfully added citation
-
-# Can Add Valid Article Citation With All Fields
-#     Fill All Citation Fields  
-#     ...  ${VALID_KEY}  
-#     ...  ${VALID_AUTHOR}  
-#     ...  ${VALID_TITLE}  
-#     ...  ${VALID_JOURNAL}  
-#     ...  ${VALID_YEAR}
-#     ...  ${VALID_VOLUME}
-#     ...  ${VALID_NUMBER}
-#     ...  ${VALID_PAGES}
-#     ...  ${VALID_MONTH}
-#     ...  ${VALID_NOTE}
-#     Submit Citation Form
-#     Page Should Contain  Successfully added citation
-
 Added Citation With All Fields Can Be Viewed
     Go To  ${HOME_URL}
     Page Should Contain  ${VALID_KEY}
@@ -81,36 +57,6 @@ Added Citation With All Fields Can Be Viewed
     Page Should Contain  ${VALID_PAGES}
     Page Should Contain  ${VALID_MONTH}
     Page Should Contain  ${VALID_NOTE}
-
-# Can Add Citation With Only Volume As Optional Field
-#     Fill Citation Form With Required Fields  ${VALID_KEY}  ${VALID_AUTHOR}  ${VALID_TITLE}  ${VALID_JOURNAL}  ${VALID_YEAR}
-#     Input Text  name=volume  ${VALID_VOLUME}
-#     Submit Citation Form
-#     Page Should Contain  Successfully added citation
-
-# Can Add Citation With Only Number As Optional Field
-#     Fill Citation Form With Required Fields  ${VALID_KEY}  ${VALID_AUTHOR}  ${VALID_TITLE}  ${VALID_JOURNAL}  ${VALID_YEAR}
-#     Input Text  name=number  ${VALID_NUMBER}
-#     Submit Citation Form
-#     Page Should Contain  Successfully added citation
-
-# Can Add Citation With Only Pages As Optional Field
-#     Fill Citation Form With Required Fields  ${VALID_KEY}  ${VALID_AUTHOR}  ${VALID_TITLE}  ${VALID_JOURNAL}  ${VALID_YEAR}
-#     Input Text  name=pages  ${VALID_PAGES}
-#     Submit Citation Form
-#     Page Should Contain  Successfully added citation
-
-# Can Add Citation With Only Month As Optional Field
-#     Fill Citation Form With Required Fields  ${VALID_KEY}  ${VALID_AUTHOR}  ${VALID_TITLE}  ${VALID_JOURNAL}  ${VALID_YEAR}
-#     Input Text  name=month  ${VALID_MONTH}
-#     Submit Citation Form
-#     Page Should Contain  Successfully added citation
-
-# Can Add Citation With Only Note As Optional Field
-#     Fill Citation Form With Required Fields  ${VALID_KEY}  ${VALID_AUTHOR}  ${VALID_TITLE}  ${VALID_JOURNAL}  ${VALID_YEAR}
-#     Input Text  name=note  ${VALID_NOTE}
-#     Submit Citation Form
-#     Page Should Contain  Successfully added citation
 
 Cannot Send Citation Without Required Fields
     Submit Citation Form
