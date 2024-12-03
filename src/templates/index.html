@@ -10,51 +10,40 @@ Citation Manager
 
 {% block body %}
 
-
-<h2>Citations</h2>
-
-<a href="{{url_for('download')}}">Generate and download BibTeX file</a>
-
-<h3>Saved citations</h3>
+<h2>Saved citations</h2>
 
 {% if citations %}
-<table>
-    <tr class="titles">
-        <td>Key</td>
-        <td>Authors</td>
-        <td>Title</td>
-        <td>Journal</td>
-        <td>Year</td>
-        <td>Volume</td>
-        <td>Number</td>
-        <td>Pages</td>
-        <td>Month</td>
-        <td>Note</td>
-        <td>Editing</td>
-    </tr>
-    {% for citation in citations %}
-    <tr>
-        <td>{{ citation.key }}</td>
-        <td>{{citation.author|join(", ")}}</td>
-        <td>{{ citation.title }}</td>
-        <td>{{ citation.journal }}</td>
-        <td>{{ citation.year }}</td>
-        <td>{{ citation.volume }}</td>
-        <td>{{ citation.number }}</td>
-        <td>{{ citation.pages }}</td>
-        <td>{{ citation.month }}</td>
-        <td>{{ citation.note }}</td>
-        <td>
-            <button>
-                Edit
-            </button>
-        </td>
-    </tr>
+<div id="citation_container">
+    {% for citation_type in citations %}
+    <div class="citation_type">
+        <h3>{{ citation_type.capitalize() }}</h3>
+        {% for citation in citations[citation_type] %}
+        <div class="citation">
+            <div class="citation_brief">
+                <span>{{ citation.key }}</span>
+                <span>{{ citation.author|join(", ") }}</span>
+                <span>{{ citation.title }}</span>
+            </div>
+            <div class="popup">
+                <h2>{{ citation_type.capitalize() }} <button><span>&#x2b;</span></button></h2>
+                {% for field in citation %}
+                {% if citation[field] is iterable and citation[field] is not string %}
+                    <div>{{ field.capitalize() }}: {{ citation[field]|join(", ") }}</div>
+                {% elif citation[field] is not none and field != "created_at"%}
+                    <div>{{ field.capitalize() }}: {{ citation[field] }}</div>
+                {% endif %}
+                {% endfor %}
+                <div>Citation created on: {{ citation.created_at }}</div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
     {% endfor %}
-</table>
+</div>
 {% else %}
 <p>Add citations to see them here.</p>
 {% endif %}
 
+<script src="{{url_for('static', filename='javascript/index.js')}}"></script>
 
 {% endblock %}

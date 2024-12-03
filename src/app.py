@@ -1,3 +1,4 @@
+from collections import defaultdict
 from flask import redirect, render_template, request, flash, send_file
 from repositories.citation_repository import get_citations, create_citation
 from config import app
@@ -7,7 +8,25 @@ from util import citation_data_to_class, get_citation_types, citation_class_to_b
 @app.route("/")
 def index():
     citations = get_citations()
-    return render_template("index.html", citations=citations)
+
+    organized_citations = defaultdict(list)
+    for citation in citations:
+        organized_citations[citation.type].append(vars(citation))
+
+    # Sort the citation types by the amount of citations in them
+    desc_sorted = sorted(organized_citations.items(), key=lambda item: len(item[1]), reverse=True)
+    asc_sorted = sorted(organized_citations.items(), key=lambda item: len(item[1]))
+
+    # Alternate the items from descending and ascending sorted lists
+    result = []
+    while desc_sorted or asc_sorted:
+        if desc_sorted:
+            result.append(desc_sorted.pop(0))
+        if asc_sorted:
+            result.append(asc_sorted.pop(0))
+
+    alternating_dict = dict(result)
+    return render_template("index.html", citations=alternating_dict)
 
 
 @app.route("/add_citation", methods=["POST", "GET"])
