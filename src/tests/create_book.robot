@@ -46,19 +46,6 @@ Open Optional Fields
 
 *** Test Cases ***
 
-#Added Citation With All Fields Can Be Viewed
-#    Go To  ${HOME_URL}
-#    Page Should Contain  ${VALID_KEY}
-#    Page Should Contain  ${VALID_AUTHOR}
-#    Page Should Contain  ${VALID_TITLE}
-#    Page Should Contain  ${VALID_YEAR}
-#    Page Should Contain  ${VALID_PUBLISHER}
-#    Page Should Contain  ${VALID_VOLUME}
-#    Page Should Contain  ${VALID_SERIES}
-#    Page Should Contain  ${VALID_ADDRESS}
-#    Page Should Contain  ${VALID_EDITION}
-#    Page Should Contain  ${VALID_NOTE}
-
 Cannot Send Citation Without Required Fields
     Submit Citation Form
     Page Should Not Contain  Failed to add citation
