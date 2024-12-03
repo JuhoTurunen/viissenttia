@@ -2,7 +2,7 @@ import json
 from sqlalchemy import text
 from sqlalchemy.exc import DataError, IntegrityError, SQLAlchemyError
 from config import db
-from util import citation_data_to_class, sql_insert_writer
+from util import citation_data_to_class, sql_insert_writer, get_citation_types
 
 
 def get_citations():
@@ -10,17 +10,19 @@ def get_citations():
     Get citations from database
     :return: list of citation objects
     """
-    citations = db.session.execute(
-        text(
-            """
-            SELECT * FROM citation_base 
-            INNER JOIN article
-            ON citation_base.id = article.citation_id
-            """
-        )
-    ).mappings()
+    citation_classes=[]
+    for citation_type in get_citation_types():
+        citations = db.session.execute(
+            text(
+                f"""
+                SELECT * FROM citation_base 
+                INNER JOIN {citation_type}
+                ON citation_base.id = {citation_type}.citation_id
+                """
+            )
+        ).mappings()
 
-    citation_classes = [result for c in citations if (result := citation_data_to_class(dict(c)))]
+        citation_classes.extend([result for c in citations if (result := citation_data_to_class(dict(c)))])
 
     return sorted(
         citation_classes,
