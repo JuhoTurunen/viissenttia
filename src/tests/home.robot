@@ -11,7 +11,7 @@ App launches to home page
 Add a new citation button works
     Go To  ${HOME_URL}
     Click Link  Add Citation
-    Title Should Be  Create a new citation
+    Page Should Contain  Show optional fields
 
 Return to frontpage works from add citations
     Click Link  Home

@@ -19,8 +19,7 @@ ${VALID_NOTE}       Test note
 *** Keywords ***
 
 Go To Add Citation Page
-    Go To  ${HOME_URL}
-    Click Link  Add Citation
+    Go To  ${ADD_CITATION_URL}
 
 Fill Citation Form With Required Fields
     [Arguments]   ${author}  ${title}  ${journal}  ${year}
