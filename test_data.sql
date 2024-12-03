@@ -8,7 +8,7 @@ CREATE TABLE citation_base (
 
 CREATE TABLE article (
     citation_id INT PRIMARY KEY,
-    author TEXT NOT NULL,
+    author JSONB NOT NULL,
     title TEXT NOT NULL,
     journal TEXT NOT NULL,
     year INT NOT NULL,
@@ -22,7 +22,7 @@ CREATE TABLE article (
 
 CREATE TABLE book (
     citation_id INT PRIMARY KEY,
-    author TEXT NOT NULL,
+    author JSONB NOT NULL,
     title TEXT NOT NULL,
     year INT NOT NULL,
     publisher TEXT NOT NULL,
@@ -36,7 +36,7 @@ CREATE TABLE book (
 
 CREATE TABLE manual (
     citation_id INT PRIMARY KEY,
-    author TEXT NOT NULL,
+    author JSONB NOT NULL,
     title TEXT NOT NULL,
     organization TEXT NOT NULL,
     year INT NOT NULL,
