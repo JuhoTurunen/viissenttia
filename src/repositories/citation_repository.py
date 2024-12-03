@@ -62,7 +62,8 @@ def create_citation(citation_class):
         citation_dict = vars(citation_class)
         citation_dict["citation_id"] = citation_base_id
         citation_dict["author"] = json.dumps(citation_class.author)
-        citation_dict["editor"] = json.dumps(citation_class.editor)
+        if hasattr(citation_class, "editor"):
+            citation_dict["editor"] = json.dumps(citation_class.editor)
 
         sql_command = text(sql_insert_writer(citation_class.type, citation_dict))
 
