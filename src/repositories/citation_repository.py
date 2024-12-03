@@ -12,17 +12,21 @@ def get_citations():
     """
     citation_classes=[]
     for citation_type in get_citation_types():
-        citations = db.session.execute(
-            text(
-                f"""
-                SELECT * FROM citation_base 
-                INNER JOIN {citation_type}
-                ON citation_base.id = {citation_type}.citation_id
-                """
-            )
-        ).mappings()
+        try:
+            citations = db.session.execute(
+                text(
+                    f"""
+                    SELECT * FROM citation_base 
+                    INNER JOIN {citation_type}
+                    ON citation_base.id = {citation_type}.citation_id
+                    """
+                )
+            ).mappings()
 
-        citation_classes.extend([result for c in citations if (result := citation_data_to_class(dict(c)))])
+            citation_classes.extend([result for c in citations if (result := citation_data_to_class(dict(c)))])
+        except SQLAlchemyError:
+            pass
+
 
     return sorted(
         citation_classes,
