@@ -17,7 +17,7 @@ CREATE TABLE article (
     pages TEXT,
     month INT,
     note TEXT,
-    CONSTRAINT fk_citation_base FOREIGN KEY (citation_id) REFERENCES citation_base(id)
+    CONSTRAINT fk_citation_base FOREIGN KEY (citation_id) REFERENCES citation_base(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE book (
@@ -31,7 +31,7 @@ CREATE TABLE book (
     address TEXT,
     edition INT,
     note TEXT,
-    CONSTRAINT fk_citation_base FOREIGN KEY (citation_id) REFERENCES citation_base(id)
+    CONSTRAINT fk_citation_base FOREIGN KEY (citation_id) REFERENCES citation_base(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE manual (
@@ -45,7 +45,7 @@ CREATE TABLE manual (
     month TEXT,
     note TEXT,
     annote TEXT,
-    CONSTRAINT fk_citation_base FOREIGN KEY (citation_id) REFERENCES citation_base(id)
+    CONSTRAINT fk_citation_base FOREIGN KEY (citation_id) REFERENCES citation_base(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- Add test data: Articles (4)
