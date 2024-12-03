@@ -132,3 +132,39 @@ class Inproceedings(CitationBase):
             f"address={self.address}, month={self.month}, organization={self.organization}, "
             f"edition={self.edition},publisher={self.publisher} note={self.note}, created_at={self.created_at})"
         )
+
+class Manual(CitationBase):
+    def __init__(
+        self,
+        key,
+        author,
+        title,
+        organization,
+        year,
+        created_at=None,
+        address=None,
+        edition=None,
+        month=None,
+        note=None,
+        annote=None,
+    ):
+        super().__init__(key=key, citation_type="manual", created_at=created_at)
+
+        self.author = author
+        self.title = title
+        self.organization = organization
+        self.year = year
+        self.address = address
+        self.edition = edition
+        self.month = month
+        self.note = note
+        self.annote = annote
+
+    def __str__(self):
+        return (
+            f"Manual(key={self.key}, author={self.author}, title={self.title}, "
+            f"organization={self.organization}, year={self.year}, address={self.address}, "
+            f"edition={self.edition}, month={self.month}, note={self.note}, "
+            f"annote={self.annote}, created_at={self.created_at})"
+        )
+    
