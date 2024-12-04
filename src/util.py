@@ -135,7 +135,7 @@ def citation_class_to_bibtex_file(citation_list):
             bibtex.write(curly_brace_open)
             bibtex.write(f"{citation_key},\n")
             for key, value in citation_dict.items():
-                if key == "author" or key == "editor":
+                if isinstance(value,list):
                     for author in value:
                         if author:
                             authors += author + " and "
