@@ -38,6 +38,8 @@ def citation_data_to_class(form, front_facing=False):
     validator = Validator(form, front_facing)
 
     try:
+        existing_key = form.get("key")
+
         if form.get("type") == "article":
             article_authors = validator.check("author", list, True)
             year = validator.check("year", int, True)
@@ -46,7 +48,7 @@ def citation_data_to_class(form, front_facing=False):
                 title=validator.check("title", str, True),
                 journal=validator.check("journal", str, True),
                 year=year,
-                key=f"{article_authors[0].split()[-1]}{year}",
+                key=existing_key or f"{article_authors[0].split()[-1]}{year}",
                 created_at=validator.check("created_at", str),
                 volume=validator.check("volume", int),
                 number=validator.check("number", int),
@@ -62,7 +64,7 @@ def citation_data_to_class(form, front_facing=False):
                 title=validator.check("title", str, True),
                 publisher=validator.check("publisher", str, True),
                 year=year,
-                key=f"{book_authors[0].split()[-1]}{year}",
+                key=existing_key or f"{book_authors[0].split()[-1]}{year}",
                 created_at=validator.check("created_at", str),
                 edition=validator.check("edition", int),
                 volume=validator.check("volume", int),
@@ -78,7 +80,7 @@ def citation_data_to_class(form, front_facing=False):
                 title=validator.check("title", str, True),
                 booktitle=validator.check("booktitle", str, True),
                 year=year,
-                key=f"{book_authors[0].split()[-1]}{year}",
+                key=existing_key or f"{book_authors[0].split()[-1]}{year}",
                 created_at=validator.check("created_at", str),
                 editor=validator.check("editor", list),
                 edition=validator.check("edition", str),
@@ -100,7 +102,7 @@ def citation_data_to_class(form, front_facing=False):
                 title=validator.check("title", str, True),
                 organization=validator.check("organization", str, True),
                 year=year,
-                key=f"{manual_authors[0].split()[-1]}{year}",
+                key=existing_key or f"{manual_authors[0].split()[-1]}{year}",
                 created_at=validator.check("created_at", str),
                 edition=validator.check("edition", str),
                 address=validator.check("address", str),
