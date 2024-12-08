@@ -29,7 +29,26 @@ CREATE TABLE book (
     volume INT,
     series TEXT,
     address TEXT,
-    edition INT,
+    edition TEXT,
+    note TEXT,
+    CONSTRAINT fk_citation_base FOREIGN KEY (citation_id) REFERENCES citation_base(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE inproceedings (
+    citation_id INT PRIMARY KEY,
+    author JSONB NOT NULL,
+    title TEXT NOT NULL,
+    booktitle TEXT NOT NULL,
+    year INT NOT NULL,
+    editor JSONB,
+    volume INT,
+    number INT,
+    month INT,
+    series TEXT,
+    pages TEXT,
+    address TEXT,
+    organization TEXT,
+    publisher TEXT NOT NULL,
     note TEXT,
     CONSTRAINT fk_citation_base FOREIGN KEY (citation_id) REFERENCES citation_base(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
@@ -72,9 +91,14 @@ VALUES (5, 'Yuval Fisher', 'Fractal Image Comression: Theory and Application', 1
 
 INSERT INTO citation_base (key, type) VALUES ('Knuth1973-1', 'book');
 INSERT INTO book (citation_id, author, title, year, publisher, address, edition, note) 
-VALUES (6, 'Donald E. Knuth', 'The art of computer programming', 1973, 'Addison-Wesley', 'Reading, Massachusetts', 3, 'the book is still incomplete');
+VALUES (6, 'Donald E. Knuth', 'The art of computer programming', 1973, 'Addison-Wesley', 'Reading, Massachusetts', '3', 'the book is still incomplete');
 
 -- Add test data: Manual (1)
 INSERT INTO citation_base (key, type) VALUES ('Thorlabs2015-1', 'manual');
 INSERT INTO manual (citation_id, author, title, organization, year) 
 VALUES (7, 'Thorlabs', 'Position Sensing Detector User Guide', 'Thorlabs', 2015);
+
+-- Add test data: Inproceedings (1)
+INSERT INTO citation_base (key, type) VALUES ('Okuya2022-1', 'inproceedings');
+INSERT INTO manual (citation_id, author, title, booktitle, year) 
+VALUES (8, 'Yujiro Okuya', 'Distributed Architecture for Remote Collaborative Modification of Parametric CAD Data', '2022 International Conference on 6G Commun', 2022);

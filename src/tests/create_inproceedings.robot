@@ -14,7 +14,6 @@ ${VALID_PUBLISHER}  Test book publisher
 ${VALID_VOLUME}     5
 ${VALID_SERIES}     Test book series
 ${VALID_ADDRESS}    Test publisher address
-${VALID_EDITION}    2
 ${VALID_PAGES}      500-600
 ${VALID_EDITOR}     Hannu Hanhi
 ${VALID_NOTE}       Test book note
@@ -33,13 +32,12 @@ Fill Citation Form With Required Fields
     Input Text  name=year  ${year}
 
 Fill All Citation Fields
-    [Arguments]   ${author}  ${title}  ${year}  ${publisher}  ${volume}  ${series}  ${address}  ${edition}  ${note}  ${booktitle}  ${editor}  ${organization}  ${month}  ${pages}  ${number}
+    [Arguments]   ${author}  ${title}  ${year}  ${publisher}  ${volume}  ${series}  ${address}  ${note}  ${booktitle}  ${editor}  ${organization}  ${month}  ${pages}  ${number}
     Fill Citation Form With Required Fields ${author}  ${title}  ${booktitle}  ${year}
     Input Text  name=editor  ${editor}
     Input Text  name=volume  ${volume}
     Input Text  name=series  ${series}
     Input Text  name=address  ${address}
-    Input Text  name=edition  ${edition}
     Input Text  name=number  ${number}
     Input Text  name=pages  ${pages}
     Input Text  name=month ${month}

@@ -100,7 +100,6 @@ class Inproceedings(CitationBase):
         address=None,
         month=None,
         organization=None,
-        edition=None,
         publisher=None,
         note=None,
     ):
@@ -120,7 +119,6 @@ class Inproceedings(CitationBase):
         self.address = address
         self.month=month
         self.organization=organization
-        self.edition = edition
         self.publisher = publisher
         self.note = note
 
@@ -130,7 +128,7 @@ class Inproceedings(CitationBase):
             f"year={self.year}, editor={self.editor}, number={self.number}, "
             f"volume={self.volume}, series={self.series}, pages={self.pages}, "
             f"address={self.address}, month={self.month}, organization={self.organization}, "
-            f"edition={self.edition},publisher={self.publisher} note={self.note}, created_at={self.created_at})"
+            f"publisher={self.publisher} note={self.note}, created_at={self.created_at})"
         )
 
 class Manual(CitationBase):

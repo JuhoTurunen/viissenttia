@@ -30,7 +30,7 @@ class TestClassGenerator(unittest.TestCase):
                     "volume":2,
                     "series":"sarja",
                     "pages":"pages",
-                    "edition":5,
+                    "edition":"5",
                     "address":"some adress",
                     "note":"Some notes"
                     }
@@ -49,7 +49,6 @@ class TestClassGenerator(unittest.TestCase):
                     "month":5,
                     "series":"sarja",
                     "pages":"pages",
-                    "edition":"5",
                     "organization":"mafia",
                     "address":"some adress",
                     "note":"Some notes"

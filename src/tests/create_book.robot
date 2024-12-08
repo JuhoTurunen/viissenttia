@@ -61,10 +61,3 @@ Invalid Volume Format Is Not Accepted
     Input Text  name=volume  abc
     Submit Citation Form
     Page Should Contain  Field volume expects a number, received text
-
-Invalid Edition Format Is Not Accepted
-    Fill Citation Form With Required Fields  ${VALID_AUTHOR}  ${VALID_TITLE}  ${VALID_YEAR}  ${VALID_PUBLISHER}
-    Open Optional Fields
-    Input Text  name=edition  abc
-    Submit Citation Form
-    Page Should Contain  Field edition expects a number, received text
