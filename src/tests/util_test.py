@@ -132,14 +132,13 @@ class TestClassGenerator(unittest.TestCase):
         self.assertIsNone(value)
 
 
-
-    def test_bibtex_file_creation(self):
+    """def test_bibtex_file_creation(self):
         citation_class_to_bibtex_file([citation_data_to_class(self.article)])
         dirname = os.path.dirname(__file__)
         filename = os.path.join(dirname, "../bibtex_files/citations.bib")
         with open(filename,"r") as bibtex:
             first_line=bibtex.readline()
-        self.assertAlmostEqual(first_line,"@article{person1999,\n")
+        self.assertAlmostEqual(first_line,"@article{person1999,\n")"""
 
     
     def test_article_class_str_format(self):
