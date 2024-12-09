@@ -102,7 +102,7 @@ def search():
         results = filter_search_results(
             citations, search_parameters["search_term"], search_parameters["search_field"]
         )
-        return render_template("search.html", search_results=[dict(vars(citation)) for citation in citations])
+        return render_template("search.html", search_results=[dict(vars(citation)) for citation in results])
 
 
 @app.route("/delete_citation", methods=["POST"])
