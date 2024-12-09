@@ -26,7 +26,6 @@ def index():
             result.append(asc_sorted.pop(0))
 
     alternating_dict = dict(result)
-    print(alternating_dict["article"])
     return render_template("index.html", citations=alternating_dict)
 
 
