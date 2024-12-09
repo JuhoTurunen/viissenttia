@@ -5,16 +5,16 @@ Suite Teardown   Close Browser
 Test Setup       Go To Add Citation Page And Select Book
 
 *** Variables ***
-${VALID_KEY}        Bookauthor2020-1
-${VALID_AUTHOR}     Test Bookauthor
-${VALID_TITLE}      Test Book Title
-${VALID_YEAR}       2020
-${VALID_PUBLISHER}  Test book publisher
-${VALID_SERIES}     Test book series
+${VALID_KEY}        Author2022-1
+${VALID_AUTHOR}     Book Author
+${VALID_TITLE}      Book Title
+${VALID_YEAR}       2022
+${VALID_PUBLISHER}  Book Publisher
+${VALID_SERIES}     Book Series
 ${VALID_VOLUME}     5
 ${VALID_EDITION}    2
-${VALID_ADDRESS}    Test publisher address
-${VALID_NOTE}       Test book note
+${VALID_ADDRESS}    Book Address
+${VALID_NOTE}       Book Note
 
 *** Keywords ***
 

@@ -5,16 +5,16 @@ Suite Teardown   Close Browser
 Test Setup       Go To Add Citation Page
 
 *** Variables ***
-${VALID_KEY}        Author2023-1
-${VALID_AUTHOR}     Test Author
-${VALID_TITLE}      Test Title
-${VALID_JOURNAL}    Test Journal
-${VALID_YEAR}       2023
+${VALID_KEY}        Author2021-1
+${VALID_AUTHOR}     Article Author
+${VALID_TITLE}      Article Title
+${VALID_JOURNAL}    Article Journal
+${VALID_YEAR}       2021
 ${VALID_VOLUME}     1
 ${VALID_NUMBER}     2
-${VALID_PAGES}      10
-${VALID_MONTH}      1
-${VALID_NOTE}       Test note
+${VALID_PAGES}      10-15
+${VALID_MONTH}      12
+${VALID_NOTE}       Article Note
 
 *** Keywords ***
 

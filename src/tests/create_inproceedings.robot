@@ -5,20 +5,20 @@ Suite Teardown   Close Browser
 Test Setup       Go To Add Citation Page And Select Inproceedings
 
 *** Variables ***
-${VALID_KEY}            Bookauthor2021-1
-${VALID_AUTHOR}         Test Inproceedings Author
-${VALID_TITLE}          Test Inproceedings Title
-${VALID_BOOKTITLE}      Test Booktitle
-${VALID_YEAR}           2021
-${VALID_PUBLISHER}      Test book publisher
-${VALID_EDITOR}         Hannu Hanhi
-${VALID_SERIES}         Test book series
+${VALID_KEY}            Author2023-1
+${VALID_AUTHOR}         Inproceedings Author
+${VALID_TITLE}          Inproceedings Title
+${VALID_BOOKTITLE}      Inproceedings Booktitle
+${VALID_YEAR}           2023
+${VALID_PUBLISHER}      Inproceedings Publisher
+${VALID_EDITOR}         Inproceedings Editor
+${VALID_SERIES}         Inproceedings Series
 ${VALID_VOLUME}         5
 ${VALID_NUMBER}         2
 ${VALID_PAGES}          500-600
-${VALID_ADDRESS}        Test publisher address
+${VALID_ADDRESS}        Inproceedings Address
 ${VALID_MONTH}          11
-${VALID_ORGANIZATION}   Test Organization
+${VALID_ORGANIZATION}   Inproceedings Organization
 
 *** Keywords ***
 

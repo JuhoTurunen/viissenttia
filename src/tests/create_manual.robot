@@ -5,16 +5,16 @@ Suite Teardown   Close Browser
 Test Setup       Go To Add Citation Page And Select Manual
 
 *** Variables ***
-${VALID_KEY}          Author2023-1
+${VALID_KEY}          Author2024-1
 ${VALID_AUTHOR}       Manual Author
 ${VALID_TITLE}        Manual Title
 ${VALID_ORGANIZATION}  Manual Organization
-${VALID_YEAR}         2023
-${VALID_ADDRESS}      Test Address
+${VALID_YEAR}         2024
+${VALID_ADDRESS}      Manual Address
 ${VALID_EDITION}      1
 ${VALID_MONTH}        1
-${VALID_NOTE}         Test note for manual
-${VALID_ANNOTE}       Test annote for manual
+${VALID_NOTE}         Manual Note
+${VALID_ANNOTE}       Manual Annote
 
 *** Keywords ***
 
