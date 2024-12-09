@@ -191,6 +191,6 @@ def filter_search_results(citations,search_terms,search_fields):
                     found=True
                     break
             if found:
-                results.append(citation)
+                results.append(dict(vars(citation)))
                 break
     return results

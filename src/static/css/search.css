@@ -1,7 +1,7 @@
 #search_bar {
     display: flex;
     width: 80%;
-    margin: 2em auto 0 auto;
+    margin: 2em auto 2em auto;
 }
 
 #search_bar input, select {
@@ -16,23 +16,28 @@
 }
 
 #search_results {
-    width: 90%;
+    width: 75em;
+    max-width: 90%;
     margin: auto;
+    background-color: white;
+    border: 2px solid black;
+    box-shadow: 1px 1px 0px 1px rgba(0, 0, 0, 0.309);
     position: relative;
 }
 
-#search_results h3 {
-    text-align: center;
-}
-
-#search_results .citation_brief span {
-    min-width: 25%;
+#search_results h2 {
+    margin: 0;
+    padding: 0.5em;
+    text-align: left;
+    background-color: #1f377e;
+    color: white;
 }
 
 #search_results .citation_brief span:last-child {
-    width: 5em;
+    width: 3em;
     min-width: unset !important;
-    max-width: 5em;
+    max-width: min-content;
+    text-align: right;
     flex-shrink: 0;
     flex-grow: 0;
 }

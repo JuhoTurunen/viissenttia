@@ -95,14 +95,14 @@ def download():
 def search():
     if request.method == "GET":
         return render_template("search.html")
-    
+
     if request.method == "POST":
         citations = get_citations()
         search_parameters = request.form
         results = filter_search_results(
             citations, search_parameters["search_term"], search_parameters["search_field"]
         )
-        return render_template("search.html", search_results=[dict(vars(citation)) for citation in results])
+        return render_template("search.html", search_results=results)
 
 
 @app.route("/delete_citation", methods=["POST"])
