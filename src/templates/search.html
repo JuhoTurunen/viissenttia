@@ -16,10 +16,14 @@ Citation Manager
     <input type="submit" name="submit" value="Search">
     <input type="text" name="search_term" value="">
     <select name="search_field" required>
-        <option value="all">All</option>
-        <option value="author">Author</option>
-        <option value="title">Title</option>
-        <option value="year">Year</option>
+        {% for option in options %}
+
+        {% if options[option] == true %}
+        <option value="{{ option }}" selected>{{ option.capitalize() }}</option>
+        {% else %}
+        <option value="{{ option }}">{{ option.capitalize() }}</option>
+        {% endif %}
+        {% endfor %}
     </select>
 </form>
 

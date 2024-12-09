@@ -93,19 +93,19 @@ def download():
 
 @app.route("/search", methods=["POST", "GET"])
 def search():
+    options = {"all": False, "author": False, "title": False, "year": False}
     if request.method == "POST":
         citations = get_citations()
         search_parameters = request.form
-        search_fields=[]
-        if search_parameters["search_field"]=="all":
-            search_fields=["author","title","year"]
+        options[search_parameters["search_field"]] = True
+        search_fields = []
+        if search_parameters["search_field"] == "all":
+            search_fields = ["author", "title", "year"]
         else:
-            search_fields=[search_parameters["search_field"]]
-        results = filter_search_results(
-            citations, search_parameters["search_term"], search_fields
-        )
-        return render_template("search.html", search_results=results)
-    return render_template("search.html")
+            search_fields = [search_parameters["search_field"]]
+        results = filter_search_results(citations, search_parameters["search_term"], search_fields)
+        return render_template("search.html", search_results=results, options=options)
+    return render_template("search.html", options=options)
 
 
 @app.route("/delete_citation", methods=["POST"])

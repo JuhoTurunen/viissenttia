@@ -1,9 +1,10 @@
 #search_bar {
     display: flex;
-    width: 80%;
+    width: 75em;
+    max-width: 90%;
     margin: 2em auto 2em auto;
     border: 2px solid black;
-    border-radius: 1.5em / 50%;
+    border-radius: 1.4em / 50%;
     box-shadow: 1px 1px 0px 1px rgba(0, 0, 0, 0.309);
     overflow: hidden;
 }
@@ -63,4 +64,8 @@ select {
     text-align: right;
     flex-shrink: 0;
     flex-grow: 0;
+}
+
+#search_results .citation_brief:hover {
+    scale: 1.01;
 }

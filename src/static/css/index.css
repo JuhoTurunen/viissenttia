@@ -11,7 +11,6 @@ h2 {
     overflow: hidden auto;
 }
 
-
 .citation_type {
     display: inline-block;
     width: 100%;
@@ -29,7 +28,6 @@ h2 {
     color: white;
 }
 
-
 .citation_brief {
     display: flex;
     width: 100%;
@@ -38,7 +36,6 @@ h2 {
     user-select: none;
     cursor: pointer;
 }
-
 
 .citation_brief:hover {
     background-color: white;
@@ -111,11 +108,11 @@ h2 {
     background-color: #21346d;
 }
 
-
 .popup button span {
     display: block;
     rotate: 45deg;
 }
+
 .popup.shown {
     display: block;
 }
@@ -133,7 +130,7 @@ h2 {
 
 .popup input[type="submit"]:hover {
     scale: 1.04;
-    background-color:#1f377e;
+    background-color: #1f377e;
     border-color: #445997;
 }
 
@@ -141,4 +138,4 @@ h2 {
     #citation_container {
         column-count: 1;
     }
-  }
+}
