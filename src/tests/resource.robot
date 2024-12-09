@@ -24,3 +24,8 @@ Open And Configure Browser
     END
     Open Browser  browser=${BROWSER}  options=${options}
 
+Submit Citation Form
+    Click Button  Create citation
+
+Open optional fields
+    Click Button  Show optional fields

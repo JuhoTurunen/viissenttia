@@ -5,18 +5,20 @@ Suite Teardown   Close Browser
 Test Setup       Go To Add Citation Page And Select Inproceedings
 
 *** Variables ***
-${VALID_KEY}        Bookauthor2021
-${VALID_AUTHOR}     Test Inproceedings Author
-${VALID_TITLE}      Test Inproceedings Title
-${VALID_BOOKTITLE}  Test Booktitle
-${VALID_YEAR}       2021
-${VALID_PUBLISHER}  Test book publisher
-${VALID_VOLUME}     5
-${VALID_SERIES}     Test book series
-${VALID_ADDRESS}    Test publisher address
-${VALID_PAGES}      500-600
-${VALID_EDITOR}     Hannu Hanhi
-${VALID_NOTE}       Test book note
+${VALID_KEY}            Bookauthor2021-1
+${VALID_AUTHOR}         Test Inproceedings Author
+${VALID_TITLE}          Test Inproceedings Title
+${VALID_BOOKTITLE}      Test Booktitle
+${VALID_YEAR}           2021
+${VALID_PUBLISHER}      Test book publisher
+${VALID_EDITOR}         Hannu Hanhi
+${VALID_SERIES}         Test book series
+${VALID_VOLUME}         5
+${VALID_NUMBER}         2
+${VALID_PAGES}          500-600
+${VALID_ADDRESS}        Test publisher address
+${VALID_MONTH}          11
+${VALID_ORGANIZATION}   Test Organization
 
 *** Keywords ***
 
@@ -31,31 +33,33 @@ Fill Citation Form With Required Fields
     Input Text  name=booktitle  ${booktitle}
     Input Text  name=year  ${year}
 
-Fill All Citation Fields
-    [Arguments]   ${author}  ${title}  ${year}  ${publisher}  ${volume}  ${series}  ${address}  ${note}  ${booktitle}  ${editor}  ${organization}  ${month}  ${pages}  ${number}
-    Fill Citation Form With Required Fields ${author}  ${title}  ${booktitle}  ${year}
+Fill All Inproceedings Citation Fields
+    [Arguments]   ${author}  ${title}  ${booktitle}  ${year}  ${publisher}  ${editor}  ${series}  ${volume}  ${number}  ${pages}  ${address}  ${month}  ${organization}
+    Fill Citation Form With Required Fields  ${author}  ${title}  ${booktitle}  ${year}
+    Open Optional Fields
+    Input Text  name=publisher  ${publisher}
     Input Text  name=editor  ${editor}
-    Input Text  name=volume  ${volume}
     Input Text  name=series  ${series}
-    Input Text  name=address  ${address}
+    Input Text  name=volume  ${volume}
     Input Text  name=number  ${number}
     Input Text  name=pages  ${pages}
-    Input Text  name=month ${month}
-    Input Text  name=publisher  ${publisher}
+    Input Text  name=address  ${address}
+    Input Text  name=month  ${month}
     Input Text  name=organization  ${organization}
-    Input Text  name=note  ${note}
-
-Submit Citation Form
-    Click Button  Create citation
-
-Open Optional Fields
-    Click Button  Show optional fields
 
 *** Test Cases ***
 
 Cannot Send Citation Without Required Fields
     Submit Citation Form
     Page Should Not Contain  Failed to add citation
+
+Added Inproceedings Citation With All Fields Can Be Viewed
+    Fill All Inproceedings Citation Fields    ${VALID_AUTHOR}  ${VALID_TITLE}  ${VALID_BOOKTITLE}  ${VALID_YEAR}  ${VALID_PUBLISHER}  ${VALID_EDITOR}  ${VALID_SERIES}  ${VALID_VOLUME}  ${VALID_NUMBER}  ${VALID_PAGES}  ${VALID_ADDRESS}  ${VALID_MONTH}  ${VALID_ORGANIZATION}
+    Submit Citation Form
+    Go To  ${HOME_URL}
+    Page Should Contain  ${VALID_KEY}
+    Page Should Contain  ${VALID_AUTHOR}
+    Page Should Contain  ${VALID_TITLE}
 
 Invalid Year Format Is Not Accepted
     Fill Citation Form With Required Fields  ${VALID_AUTHOR}  ${VALID_TITLE}  ${VALID_BOOKTITLE}  abc  

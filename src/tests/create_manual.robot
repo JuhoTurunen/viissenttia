@@ -5,7 +5,7 @@ Suite Teardown   Close Browser
 Test Setup       Go To Add Citation Page And Select Manual
 
 *** Variables ***
-${VALID_KEY}          Author2023
+${VALID_KEY}          Author2023-1
 ${VALID_AUTHOR}       Manual Author
 ${VALID_TITLE}        Manual Title
 ${VALID_ORGANIZATION}  Manual Organization
@@ -39,12 +39,6 @@ Fill All Manual Citation Fields
     Input Text  name=month  ${month}
     Input Text  name=note  ${note}
     Input Text  name=annote  ${annote}
-
-Submit Citation Form
-    Click Button  Create citation
-
-Open Optional Fields
-    Click Button  Show optional fields
 
 *** Test Cases ***
 

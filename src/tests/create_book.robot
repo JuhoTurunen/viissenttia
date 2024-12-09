@@ -5,15 +5,15 @@ Suite Teardown   Close Browser
 Test Setup       Go To Add Citation Page And Select Book
 
 *** Variables ***
-${VALID_KEY}        Bookauthor2020
+${VALID_KEY}        Bookauthor2020-1
 ${VALID_AUTHOR}     Test Bookauthor
 ${VALID_TITLE}      Test Book Title
 ${VALID_YEAR}       2020
 ${VALID_PUBLISHER}  Test book publisher
-${VALID_VOLUME}     1
 ${VALID_SERIES}     Test book series
-${VALID_ADDRESS}    Test publisher address
+${VALID_VOLUME}     5
 ${VALID_EDITION}    2
+${VALID_ADDRESS}    Test publisher address
 ${VALID_NOTE}       Test book note
 
 *** Keywords ***
@@ -23,32 +23,35 @@ Go To Add Citation Page And Select Book
     Select From List By Label  xpath=//select[@name="type"]  Book
 
 Fill Citation Form With Required Fields
-    [Arguments]   ${author}  ${title}  ${year}  ${publisher}
+    [Arguments]   ${author}  ${title}  ${publisher}  ${year}
     Input Text  name=author  ${author}
     Input Text  name=title  ${title}
-    Input Text  name=year  ${year}
     Input Text  name=publisher  ${publisher}
+    Input Text  name=year  ${year}
 
-Fill All Citation Fields
-    [Arguments]   ${author}  ${title}  ${year}  ${publisher}  ${volume}  ${series}  ${address}  ${edition}  ${note}
-    Fill Citation Form With Required Fields ${author}  ${title}  ${year}  ${publisher}
-    Input Text  name=volume  ${volume}
+Fill All Book Citation Fields
+    [Arguments]   ${author}  ${title}  ${publisher}  ${year}  ${series}  ${volume}  ${edition}  ${address}  ${note}
+    Fill Citation Form With Required Fields  ${author}  ${title}  ${publisher}  ${year}
+    Open Optional Fields
     Input Text  name=series  ${series}
-    Input Text  name=address  ${address}
+    Input Text  name=volume  ${volume}
     Input Text  name=edition  ${edition}
+    Input Text  name=address  ${address}
     Input Text  name=note  ${note}
-
-Submit Citation Form
-    Click Button  Create citation
-
-Open Optional Fields
-    Click Button  Show optional fields
 
 *** Test Cases ***
 
 Cannot Send Citation Without Required Fields
     Submit Citation Form
     Page Should Not Contain  Failed to add citation
+
+Added Book Citation With All Fields Can Be Viewed
+    Fill All Book Citation Fields    ${VALID_AUTHOR}  ${VALID_TITLE}  ${VALID_PUBLISHER}  ${VALID_YEAR}  ${VALID_SERIES}  ${VALID_VOLUME}  ${VALID_EDITION}  ${VALID_ADDRESS}  ${VALID_NOTE}
+    Submit Citation Form
+    Go To  ${HOME_URL}
+    Page Should Contain  ${VALID_KEY}
+    Page Should Contain  ${VALID_AUTHOR}
+    Page Should Contain  ${VALID_TITLE}
 
 Invalid Year Format Is Not Accepted
     Fill Citation Form With Required Fields  ${VALID_AUTHOR}  ${VALID_TITLE}  abc  ${VALID_PUBLISHER}
