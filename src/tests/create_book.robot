@@ -54,12 +54,12 @@ Added Book Citation With All Fields Can Be Viewed
     Page Should Contain  ${VALID_TITLE}
 
 Invalid Year Format Is Not Accepted
-    Fill Citation Form With Required Fields  ${VALID_AUTHOR}  ${VALID_TITLE}  abc  ${VALID_PUBLISHER}
+    Fill Citation Form With Required Fields  ${VALID_AUTHOR}  ${VALID_TITLE}  ${VALID_PUBLISHER}  abc
     Submit Citation Form
     Page Should Contain  Field year expects a number, received text
 
 Invalid Volume Format Is Not Accepted
-    Fill Citation Form With Required Fields  ${VALID_AUTHOR}  ${VALID_TITLE}  ${VALID_YEAR}  ${VALID_PUBLISHER}
+    Fill Citation Form With Required Fields  ${VALID_AUTHOR}  ${VALID_TITLE}  ${VALID_PUBLISHER}  ${VALID_YEAR}
     Open Optional Fields
     Input Text  name=volume  abc
     Submit Citation Form
