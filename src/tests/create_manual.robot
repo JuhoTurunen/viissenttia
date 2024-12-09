@@ -13,8 +13,8 @@ ${VALID_YEAR}         2023
 ${VALID_ADDRESS}      Test Address
 ${VALID_EDITION}      1
 ${VALID_MONTH}        1
-${VALID_NOTE}         Test note for manual
-${VALID_ANNOTE}       Test annote for manual
+${VALID_NOTE}         Test Note for manual
+${VALID_ANNOTE}       Test Annote for manual
 
 *** Keywords ***
 
