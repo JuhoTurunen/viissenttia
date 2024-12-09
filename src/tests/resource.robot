@@ -8,6 +8,7 @@ ${HOME_URL}   http://${SERVER}
 ${BROWSER}    chrome
 ${HEADLESS}   false
 ${ADD_CITATION_URL}  http://${SERVER}/add_citation
+${SEARCH_URL}  http://${SERVER}/search
 
 *** Keywords ***
 Open And Configure Browser

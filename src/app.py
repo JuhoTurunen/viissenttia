@@ -104,6 +104,8 @@ def search():
         else:
             search_fields = [search_parameters["search_field"]]
         results = filter_search_results(citations, search_parameters["search_term"], search_fields)
+        if not results:
+            results="No matching results"
         return render_template("search.html", search_results=results, options=options)
     return render_template("search.html", options=options)
 

@@ -26,8 +26,11 @@ Citation Manager
         {% endfor %}
     </select>
 </form>
-
-{% if search_results %}
+{% if search_results is string %}
+<div id="search_results">
+    <h2>{{search_results}}</h2>
+</div>
+{% elif search_results %}
 <div id="search_results">
     <h2>Search results</h2>
     {% for citation in search_results %}
@@ -56,6 +59,7 @@ Citation Manager
     </div>
     {% endfor %}
 </div>
+
 {% endif %}
 
 <script src="{{url_for('static', filename='javascript/index.js')}}"></script>
