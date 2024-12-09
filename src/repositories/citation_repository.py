@@ -94,29 +94,31 @@ def create_citation(citation_class):
         raise
 
 def delete_citation(citation_id):
+    """
+    Poistaa viitteen citation_base-taulusta ja kaikki siihen liittyvät rivit inproceedings-taulusta.
+    :param citation_id: Poistettavan viitteen ID
+    :return: True, jos poistaminen onnistui, muuten False
+    """
     try:
-        citation_type = get_citation_type(citation_id)  # Hae sitaatin tyyppi ID:n perusteella
-        if citation_type:
-            delete_sql = text(f"DELETE FROM {citation_type} WHERE citation_id = :citation_id")
-            db.session.execute(delete_sql, {"citation_id": citation_id})
+        # Poista citation_base-taulusta
+        delete_sql = text("""
+            DELETE FROM citation_base
+            WHERE id = :citation_id
+        """)
 
-        delete_base_sql = text("DELETE FROM citation_base WHERE id = :citation_id")
-        db.session.execute(delete_base_sql, {"citation_id": citation_id})
-
+        db.session.execute(delete_sql, {"citation_id": citation_id})
         db.session.commit()
         return True
+
+    except IntegrityError as e:
+        db.session.rollback()
+        print(f"Integrity error: {e}")
+        return False
     except SQLAlchemyError as e:
         db.session.rollback()
-        print(f"Database error while deleting citation: {e}")
+        print(f"Database error: {e}")
         return False
-
-def get_citation_type(citation_id):
-    try:
-        result = db.session.execute(
-            text("SELECT type FROM citation_base WHERE id = :citation_id"),
-            {"citation_id": citation_id}
-        ).fetchone()
-        return result[0] if result else None
-    except SQLAlchemyError as e:
-        print(f"Database error while getting citation type: {e}")
-        return None
+    except Exception as e:
+        db.session.rollback()
+        print(f"Unexpected error: {e}")
+        raise
