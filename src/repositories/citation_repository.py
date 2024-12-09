@@ -92,3 +92,31 @@ def create_citation(citation_class):
         print(f"Unexpected error: {e}")
         # Raise fatal error if some other exception is encountered
         raise
+
+def delete_citation(citation_id):
+    try:
+        citation_type = get_citation_type(citation_id)  # Hae sitaatin tyyppi ID:n perusteella
+        if citation_type:
+            delete_sql = text(f"DELETE FROM {citation_type} WHERE citation_id = :citation_id")
+            db.session.execute(delete_sql, {"citation_id": citation_id})
+
+        delete_base_sql = text("DELETE FROM citation_base WHERE id = :citation_id")
+        db.session.execute(delete_base_sql, {"citation_id": citation_id})
+
+        db.session.commit()
+        return True
+    except SQLAlchemyError as e:
+        db.session.rollback()
+        print(f"Database error while deleting citation: {e}")
+        return False
+
+def get_citation_type(citation_id):
+    try:
+        result = db.session.execute(
+            text("SELECT type FROM citation_base WHERE id = :citation_id"),
+            {"citation_id": citation_id}
+        ).fetchone()
+        return result[0] if result else None
+    except SQLAlchemyError as e:
+        print(f"Database error while getting citation type: {e}")
+        return None

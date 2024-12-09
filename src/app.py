@@ -1,6 +1,6 @@
 from collections import defaultdict
 from flask import redirect, render_template, request, flash, send_file
-from repositories.citation_repository import get_citations, create_citation
+from repositories.citation_repository import get_citations, create_citation, delete_citation
 from config import app
 from util import citation_data_to_class, get_citation_types, citation_class_to_bibtex_file,filter_search_results
 
@@ -93,3 +93,16 @@ def search():
     search_parameters=request.form
     results=filter_search_results(citations,search_parameters["search_term"],search_parameters["search_field"])
     return results
+
+@app.route("/delete_citation", methods=["POST"])
+def delete_citation_route():
+    citation_id = request.form.get("id")
+    if citation_id:
+        result = delete_citation(citation_id)
+        if result:
+            flash("Citation deleted successfully.")
+        else:
+            flash("Failed to delete citation. Please try again.")
+    else:
+        flash("Citation ID not provided.")
+    return redirect("/")
