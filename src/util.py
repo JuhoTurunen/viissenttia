@@ -153,7 +153,7 @@ def citation_class_to_bibtex_file(citation_list):
 
 
 def sql_insert_writer(table, citation_dictionary):
-    banned_keys = {"created_at", "type", "key"}
+    banned_keys = {"created_at", "type", "key", "id"}
     keys = ""
     values = ""
     for key in citation_dictionary:
