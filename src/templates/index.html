@@ -34,6 +34,10 @@ Citation Manager
                 {% endif %}
                 {% endfor %}
                 <div>Citation created on: {{ citation.created_at }}</div>
+                <form action="/delete_citation" method="post">
+                    <input type="hidden" name="id" value="{{ citation.id }}">
+                    <input type="submit" name="submit" value="Delete">
+                </form>
             </div>
         </div>
         {% endfor %}

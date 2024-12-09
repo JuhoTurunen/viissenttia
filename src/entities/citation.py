@@ -1,9 +1,11 @@
 from datetime import datetime
 
+
 class CitationBase:
-    def __init__(self, key, citation_type, created_at=None):
+    def __init__(self, key, citation_type, id=None, created_at=None):
         self.key = key
         self.type = citation_type
+        self.id = id
         self.created_at = created_at or datetime.now()
 
 
@@ -15,6 +17,7 @@ class Article(CitationBase):
         title,
         journal,
         year,
+        id=None,
         created_at=None,
         volume=None,
         number=None,
@@ -23,7 +26,7 @@ class Article(CitationBase):
         note=None,
     ):
         # Call CitationBase class __init__
-        super().__init__(key=key, citation_type="article", created_at=created_at)
+        super().__init__(key=key, citation_type="article", id=id, created_at=created_at)
 
         # Initialize specific attributes for the Article class
         self.author = author
@@ -53,6 +56,7 @@ class Book(CitationBase):
         title,
         year,
         publisher,
+        id=None,
         created_at=None,
         volume=None,
         series=None,
@@ -61,7 +65,7 @@ class Book(CitationBase):
         note=None,
     ):
         # Call CitationBase class __init__
-        super().__init__(key=key, citation_type="book", created_at=created_at)
+        super().__init__(key=key, citation_type="book", id=id, created_at=created_at)
 
         # Initialize specific attributes for the Book class
         self.author = author
@@ -91,8 +95,9 @@ class Inproceedings(CitationBase):
         title,
         booktitle,
         year,
-        editor=None,
+        id=None,
         created_at=None,
+        editor=None,
         number=None,
         volume=None,
         series=None,
@@ -104,21 +109,21 @@ class Inproceedings(CitationBase):
         note=None,
     ):
         # Call CitationBase class __init__
-        super().__init__(key=key, citation_type="inproceedings", created_at=created_at)
+        super().__init__(key=key, citation_type="inproceedings", id=id, created_at=created_at)
 
         # Initialize specific attributes for the Inproceedings class
         self.author = author
         self.title = title
-        self.booktitle=booktitle
+        self.booktitle = booktitle
         self.year = year
-        self.editor=editor
-        self.number=number
+        self.editor = editor
+        self.number = number
         self.volume = volume
         self.series = series
-        self.pages=pages
+        self.pages = pages
         self.address = address
-        self.month=month
-        self.organization=organization
+        self.month = month
+        self.organization = organization
         self.publisher = publisher
         self.note = note
 
@@ -131,6 +136,7 @@ class Inproceedings(CitationBase):
             f"publisher={self.publisher} note={self.note}, created_at={self.created_at})"
         )
 
+
 class Manual(CitationBase):
     def __init__(
         self,
@@ -139,6 +145,7 @@ class Manual(CitationBase):
         title,
         organization,
         year,
+        id=None,
         created_at=None,
         address=None,
         edition=None,
@@ -146,7 +153,7 @@ class Manual(CitationBase):
         note=None,
         annote=None,
     ):
-        super().__init__(key=key, citation_type="manual", created_at=created_at)
+        super().__init__(key=key, citation_type="manual", id=id, created_at=created_at)
 
         self.author = author
         self.title = title
@@ -165,4 +172,3 @@ class Manual(CitationBase):
             f"edition={self.edition}, month={self.month}, note={self.note}, "
             f"annote={self.annote}, created_at={self.created_at})"
         )
-    

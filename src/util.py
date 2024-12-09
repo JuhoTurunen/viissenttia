@@ -39,11 +39,13 @@ def citation_data_to_class(form, front_facing=False):
 
     try:
         existing_key = form.get("key")
+        citation_id = form.get("id", None)
 
         if form.get("type") == "article":
             article_authors = validator.check("author", list, True)
             year = validator.check("year", int, True)
             result = Article(
+                id=citation_id,
                 author=article_authors,
                 title=validator.check("title", str, True),
                 journal=validator.check("journal", str, True),
@@ -60,6 +62,7 @@ def citation_data_to_class(form, front_facing=False):
             book_authors = validator.check("author", list, True)
             year = validator.check("year", int, True)
             result = Book(
+                id=citation_id,
                 author=book_authors,
                 title=validator.check("title", str, True),
                 publisher=validator.check("publisher", str, True),
@@ -76,6 +79,7 @@ def citation_data_to_class(form, front_facing=False):
             book_authors = validator.check("author", list, True)
             year = validator.check("year", int, True)
             result = Inproceedings(
+                id=citation_id,
                 author=book_authors,
                 title=validator.check("title", str, True),
                 booktitle=validator.check("booktitle", str, True),
@@ -97,6 +101,7 @@ def citation_data_to_class(form, front_facing=False):
             manual_authors = validator.check("author", list, True)
             year = validator.check("year", int, True)
             result = Manual(
+                id=citation_id,
                 author=manual_authors,
                 title=validator.check("title", str, True),
                 organization=validator.check("organization", str, True),
@@ -136,7 +141,7 @@ def citation_class_to_bibtex_file(citation_list):
             bibtex.write(curly_brace_open)
             bibtex.write(f"{citation_key},\n")
             for key, value in citation_dict.items():
-                if isinstance(value,list):
+                if isinstance(value, list):
                     for author in value:
                         if author:
                             authors += author + " and "
