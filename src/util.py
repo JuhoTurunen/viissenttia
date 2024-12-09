@@ -166,6 +166,31 @@ def sql_insert_writer(table, citation_dictionary):
     return insert_command
 
 
-def filter_search_results(citations, search_terms, search_fields):
-    # to be continued, now just returning to satisfy pylint
-    return citations, search_terms, search_fields
+def find_value_in_attribute(value,attribute):
+    index=str(attribute).lower().find(str(value).lower())
+    if index==-1:
+        return False
+    return True
+
+
+
+def filter_search_results(citations,search_terms,search_fields):
+    #to be continued, now just returning to satisfy pylint
+    results=[]
+    for citation in citations:
+        found=False
+        for search_field in search_fields:
+            attribute=getattr(citation,search_field)
+            if isinstance(attribute,list):
+                for single_attribute in attribute:
+                    if find_value_in_attribute(search_terms,single_attribute):
+                        found=True
+                        break
+            else:
+                if find_value_in_attribute(search_terms, attribute):
+                    found=True
+                    break
+            if found:
+                results.append(citation)
+                break
+    return results
