@@ -66,3 +66,4 @@ SECRET_KEY=<your-secret-key>
 9. Run Robot tests in a separate terminal window with $ robot src/tests/
 10. Stop the application with *ctrl + c* and exit poetry shell with $ exit
 
+
