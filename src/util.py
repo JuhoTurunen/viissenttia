@@ -189,7 +189,7 @@ def filter_search_results(citations,search_terms,search_fields):
             else:
                 if find_value_in_attribute(search_terms, attribute):
                     found=True
-                    break
+                    
             if found:
                 results.append(dict(vars(citation)))
                 break
