@@ -2,17 +2,40 @@
     display: flex;
     width: 80%;
     margin: 2em auto 2em auto;
+    border: 2px solid black;
+    border-radius: 1.5em / 50%;
+    box-shadow: 1px 1px 0px 1px rgba(0, 0, 0, 0.309);
+    overflow: hidden;
 }
 
 #search_bar input, select {
-    padding: 0.7em;
-    border: 1px solid black;
-    font-size: 1em;
+    padding: 0.6em;
+    border: none;
+    border-right: 2px solid black;
+    font-size: 1.1em;
     background-color: white;
+}
+
+#search_bar input[type="submit"] {
+    user-select: none;
+    cursor: pointer;
+}
+
+#search_bar input[type="submit"]:hover {
+    background-color: #3858bb;
+    color: white;
 }
 
 #search_bar input[type="text"] {
     flex-grow: 1;
+}
+
+#search_bar input:focus {
+    outline: none;
+}
+
+select {
+    border: none;
 }
 
 #search_results {
