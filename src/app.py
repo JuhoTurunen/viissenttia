@@ -2,7 +2,7 @@ from collections import defaultdict
 from flask import redirect, render_template, request, flash, send_file
 from repositories.citation_repository import get_citations, create_citation
 from config import app
-from util import citation_data_to_class, get_citation_types, citation_class_to_bibtex_file
+from util import citation_data_to_class, get_citation_types, citation_class_to_bibtex_file,filter_search_results
 
 
 @app.route("/")
@@ -85,3 +85,10 @@ def download():
     citation_class_to_bibtex_file(citations)
     path = "./bibtex_files/citations.bib"
     return send_file(path, as_attachment=True)
+
+
+@app.route("/search",methods=["POST"])
+def search():
+    citations = get_citations()
+    search_parameters=request.form
+    results=filter_search_results(citations,search_parameters["search_term"],search_parameters["search_field"])

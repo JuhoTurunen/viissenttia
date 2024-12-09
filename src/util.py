@@ -164,3 +164,7 @@ def sql_insert_writer(table, citation_dictionary):
     values = values[:-2]
     insert_command = f"INSERT INTO {table} ({keys}) VALUES ({values})"
     return insert_command
+
+
+def filter_search_results(citations,search_terms,search_fields):
+    pass
