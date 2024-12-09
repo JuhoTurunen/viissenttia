@@ -81,8 +81,8 @@ def key_generator(base_key):
 
 @app.route("/download")
 def download():
-    citations = get_citations()
-    citation_class_to_bibtex_file(citations)
+    new_citations = get_citations()
+    citation_class_to_bibtex_file(new_citations)
     path = "./bibtex_files/citations.bib"
     return send_file(path, as_attachment=True)
 
