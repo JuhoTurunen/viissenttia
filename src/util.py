@@ -167,4 +167,5 @@ def sql_insert_writer(table, citation_dictionary):
 
 
 def filter_search_results(citations,search_terms,search_fields):
-    pass
+    #to be continued, now just returning to satisfy pylint
+    return citations,search_terms,search_fields

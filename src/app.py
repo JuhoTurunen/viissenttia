@@ -92,3 +92,4 @@ def search():
     citations = get_citations()
     search_parameters=request.form
     results=filter_search_results(citations,search_parameters["search_term"],search_parameters["search_field"])
+    return results
