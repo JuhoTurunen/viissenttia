@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Citation Manager
+{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/search.css') }}">
+{% endblock %}
+
+{% block body %}
+
+
+<form id="search_bar" action="/search" method="post">
+    <input type="submit" name="submit" value="Search">
+    <input type="text" name="search_term" value="">
+    <select name="search_field" required>
+        <option value="all">All</option>
+        <option value="author">Author</option>
+        <option value="title">Title</option>
+        <option value="year">Year</option>
+    </select>
+</form>
+
+{% if search_results %}
+<div id="search_results">
+    <h2>Search results</h2>
+    {% for citation in search_results %}
+    <div class="citation">
+        <div class="citation_brief">
+            <span>{{ citation.type.capitalize() }}</span>
+            <span>{{ citation.author|join(", ") }}</span>
+            <span>{{ citation.title }}</span>
+            <span>{{ citation.year }}</span>
+        </div>
+        <div class="popup">
+            <h2>{{ citation.type.capitalize() }} <button><span>&#x2b;</span></button></h2>
+            {% for field in citation %}
+            {% if citation[field] is iterable and citation[field] is not string %}
+            <div>{{ field.capitalize() }}: {{ citation[field]|join(", ") }}</div>
+            {% elif citation[field] is not none and field != "created_at"%}
+            <div>{{ field.capitalize() }}: {{ citation[field] }}</div>
+            {% endif %}
+            {% endfor %}
+            <div>Citation created on: {{ citation.created_at }}</div>
+            <form action="/delete_citation" method="post">
+                <input type="hidden" name="id" value="{{ citation.id }}">
+                <input type="submit" name="submit" value="Delete citation">
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<script src="{{url_for('static', filename='javascript/index.js')}}"></script>
+
+{% endblock %}

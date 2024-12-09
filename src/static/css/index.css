@@ -50,6 +50,7 @@ h2 {
 .citation_brief span {
     padding: 0.5vmin;
     min-width: 33%;
+    flex-grow: 1;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -57,12 +58,14 @@ h2 {
 
 .citation_brief span:first-child {
     width: 8em;
-    min-width: unset;
+    min-width: unset !important;
     flex-shrink: 0;
+    flex-grow: 0;
 }
 
 .citation_brief span:nth-child(2) {
     max-width: 30%;
+    flex-grow: 0;
 }
 
 .popup {
@@ -117,7 +120,7 @@ h2 {
     display: block;
 }
 
-input[type="submit"] {
+.popup input[type="submit"] {
     display: block;
     margin: 0.5em auto;
     padding: 0.5em 1em;
@@ -128,7 +131,7 @@ input[type="submit"] {
     color: white;
 }
 
-input[type="submit"]:hover {
+.popup input[type="submit"]:hover {
     scale: 1.04;
     background-color:#1f377e;
     border-color: #445997;

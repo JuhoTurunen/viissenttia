@@ -2,7 +2,12 @@ from collections import defaultdict
 from flask import redirect, render_template, request, flash, send_file
 from repositories.citation_repository import get_citations, create_citation, delete_citation
 from config import app
-from util import citation_data_to_class, get_citation_types, citation_class_to_bibtex_file,filter_search_results
+from util import (
+    citation_data_to_class,
+    get_citation_types,
+    citation_class_to_bibtex_file,
+    filter_search_results,
+)
 
 
 @app.route("/")
@@ -86,12 +91,19 @@ def download():
     return send_file(path, as_attachment=True)
 
 
-@app.route("/search",methods=["POST"])
+@app.route("/search", methods=["POST", "GET"])
 def search():
-    citations = get_citations()
-    search_parameters=request.form
-    results=filter_search_results(citations,search_parameters["search_term"],search_parameters["search_field"])
-    return results
+    if request.method == "GET":
+        return render_template("search.html")
+    
+    if request.method == "POST":
+        citations = get_citations()
+        search_parameters = request.form
+        results = filter_search_results(
+            citations, search_parameters["search_term"], search_parameters["search_field"]
+        )
+        return render_template("search.html", search_results=[dict(vars(citation)) for citation in citations])
+
 
 @app.route("/delete_citation", methods=["POST"])
 def delete_citation_route():

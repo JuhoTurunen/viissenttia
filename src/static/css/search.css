@@ -1,0 +1,38 @@
+#search_bar {
+    display: flex;
+    width: 80%;
+    margin: 2em auto 0 auto;
+}
+
+#search_bar input, select {
+    padding: 0.7em;
+    border: 1px solid black;
+    font-size: 1em;
+    background-color: white;
+}
+
+#search_bar input[type="text"] {
+    flex-grow: 1;
+}
+
+#search_results {
+    width: 90%;
+    margin: auto;
+    position: relative;
+}
+
+#search_results h3 {
+    text-align: center;
+}
+
+#search_results .citation_brief span {
+    min-width: 25%;
+}
+
+#search_results .citation_brief span:last-child {
+    width: 5em;
+    min-width: unset !important;
+    max-width: 5em;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
