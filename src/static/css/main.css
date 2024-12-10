@@ -25,6 +25,7 @@ body {
 .topnav a {
     display: block;
     padding: 0 1em;
+    white-space: nowrap;
     text-decoration: none;
     color: white;
 }
@@ -36,4 +37,15 @@ body {
 
 .topnav a.reverse {
     margin-left: auto;
+}
+
+@media only screen and (max-width: 600px) {
+    .topnav {
+        height: 3em;
+        line-height: 3em;
+        font-size: 3vw;
+    }
+    .topnav a {
+        padding: 0 2vw;
+    }
 }
