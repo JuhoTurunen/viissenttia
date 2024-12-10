@@ -42,6 +42,8 @@ Fill All Book Citation Fields
 Click Citation Brief
     [Documentation]    Klikkaa citation_brief-elementtiä etusivulla
     Wait Until Element Is Visible  xpath=//div[contains(@class,'citation_brief') and contains(., '${VALID_TITLE}')]  timeout=0.5
+    Scroll Element Into View  xpath=//div[contains(@class,'citation_brief') and contains(., '${VALID_TITLE}')]
+    Wait Until Element Is Clickable  xpath=//div[contains(@class,'citation_brief') and contains(., '${VALID_TITLE}')]  timeout=0.5
     Click Element  xpath=//div[contains(@class,'citation_brief') and contains(., '${VALID_TITLE}')]
 
 Click Delete Button In Popup
