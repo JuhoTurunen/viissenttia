@@ -45,8 +45,8 @@ h2 {
 }
 
 .citation_brief span {
+    width: 33%;
     padding: 0.5vmin;
-    min-width: 33%;
     flex-grow: 1;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -54,14 +54,13 @@ h2 {
 }
 
 .citation_brief span:first-child {
-    width: 8em;
-    min-width: unset !important;
+    width: 8em !important;
     flex-shrink: 0;
     flex-grow: 0;
 }
 
 .citation_brief span:nth-child(2) {
-    max-width: 30%;
+    width: 30%;
     flex-grow: 0;
 }
 
