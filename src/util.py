@@ -168,7 +168,6 @@ def find_value_in_attribute(value,attribute):
     return True
 
 
-
 def filter_search_results(citations,search_terms,search_fields):
     results=[]
     for citation in citations:

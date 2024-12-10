@@ -95,9 +95,9 @@ def create_citation(citation_class):
 
 def delete_citation(citation_id):
     """
-    Poistaa viitteen citation_base-taulusta ja kaikki siihen liittyvät rivit inproceedings-taulusta.
-    :param citation_id: Poistettavan viitteen ID
-    :return: True, jos poistaminen onnistui, muuten False
+    Remove the citation from the citation type table and citation_base table
+    :param citation_id: ID of the citation to be removed
+    :return: True, if deletion successful, otherwise False
     """
     try:
         # Poista citation_base-taulusta

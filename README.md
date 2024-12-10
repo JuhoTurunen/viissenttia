@@ -39,13 +39,15 @@ The product and sprint backlogs can be found [here](https://helsinkifi-my.sharep
 
 [![GHA workflow badge](https://github.com/JuhoTurunen/viissenttia/actions/workflows/main.yaml/badge.svg)](https://github.com/JuhoTurunen/viissenttia/actions)
 
+
 ## Test coverage
 
 [![codecov](https://codecov.io/gh/JuhoTurunen/viissenttia/graph/badge.svg?token=UU1SYQDT8W)](https://codecov.io/gh/JuhoTurunen/viissenttia)
 
-## Testing the application
 
-You can test the application by following these steps: 
+## Setup and testing
+
+You can set-up and test the application by following these steps: 
 1. Ensure you have PostgreSQL installed. Installation instructions for variuous systems can be found [here](https://www.postgresql.org/download/)
 2. Clone the repository with $ git clone https://github.com/JuhoTurunen/viissenttia.git
 3. Go to the root directory
