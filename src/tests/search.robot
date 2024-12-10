@@ -18,6 +18,10 @@ ${VALID_NOTE}       Article Note
 
 *** Keywords ***
 
+Select Search Field
+    [Arguments]  ${field}
+    Select From List By Label  xpath=//select[@name="search_field"]  ${field}
+
 Search With Search Term
     [Arguments]   ${search_term}
     Input Text  name=search_term  ${search_term}
@@ -58,7 +62,28 @@ Add Article Citation
     Fill All Article Citation Fields    ${VALID_AUTHOR}  ${VALID_TITLE}  ${VALID_JOURNAL}  ${VALID_YEAR}  ${VALID_VOLUME}  ${VALID_NUMBER}  ${VALID_PAGES}  ${VALID_MONTH}  ${VALID_NOTE}
     Submit Citation Form
 
-Check That Article Can Be Found With Author
+Check That Article Can Be Found With All Search
+    Select Search Field  All
+    Search With Search Term  ${VALID_AUTHOR}
+    Page Should Contain  ${VALID_KEY}
+    Page Should Contain  ${VALID_YEAR}
+    Page Should Contain  ${VALID_AUTHOR}
+    Page Should Contain  ${VALID_TITLE}
+
+    Search With Search Term  ${VALID_YEAR}
+    Page Should Contain  ${VALID_KEY}
+    Page Should Contain  ${VALID_YEAR}
+    Page Should Contain  ${VALID_AUTHOR}
+    Page Should Contain  ${VALID_TITLE}
+
+    Search With Search Term  ${VALID_TITLE}
+    Page Should Contain  ${VALID_KEY}
+    Page Should Contain  ${VALID_YEAR}
+    Page Should Contain  ${VALID_AUTHOR}
+    Page Should Contain  ${VALID_TITLE}
+
+Check That Article Can Be Found With Author Search
+    Select Search Field  Author
     Search With Search Term  ${VALID_AUTHOR}
     Page Should Contain  ${VALID_KEY}
     Page Should Contain  ${VALID_YEAR}
@@ -66,6 +91,7 @@ Check That Article Can Be Found With Author
     Page Should Contain  ${VALID_TITLE}
 
 Check That Article Can Be Found With Year
+    Select Search Field  Year
     Search With Search Term  ${VALID_YEAR}
     Page Should Contain  ${VALID_KEY}
     Page Should Contain  ${VALID_YEAR}
@@ -73,9 +99,15 @@ Check That Article Can Be Found With Year
     Page Should Contain  ${VALID_TITLE}
 
 Check That Article Can Be Found With Title
+    Select Search Field  Title
     Search With Search Term  ${VALID_TITLE}
     Page Should Contain  ${VALID_KEY}
     Page Should Contain  ${VALID_YEAR}
     Page Should Contain  ${VALID_AUTHOR}
     Page Should Contain  ${VALID_TITLE}
+
+Delete Added Citation
+    Search With Search Term  ${VALID_AUTHOR}
+    Click Citation Brief  ${VALID_AUTHOR}
+    Click Delete Button In Popup
     
