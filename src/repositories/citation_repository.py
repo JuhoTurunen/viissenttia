@@ -100,7 +100,7 @@ def delete_citation(citation_id):
     :return: True, if deletion successful, otherwise False
     """
     try:
-        # Poista citation_base-taulusta
+        # Delete from citation_base table
         delete_sql = text("""
             DELETE FROM citation_base
             WHERE id = :citation_id
