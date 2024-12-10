@@ -47,14 +47,6 @@ Cannot Send Citation Without Required Fields
     Go To Add Citation Page And Select Manual
     Page Should Not Contain  Successfully added citation
 
-Added Manual Citation With All Fields Can Be Viewed
-    Fill All Manual Citation Fields    ${VALID_AUTHOR}  ${VALID_TITLE}  ${VALID_ORGANIZATION}  ${VALID_YEAR}  ${VALID_ADDRESS}  ${VALID_EDITION}  ${VALID_MONTH}  ${VALID_NOTE}  ${VALID_ANNOTE}
-    Submit Citation Form
-    Go To  ${HOME_URL}
-    Page Should Contain  ${VALID_KEY}
-    Page Should Contain  ${VALID_AUTHOR}
-    Page Should Contain  ${VALID_TITLE}
-
 Invalid Year Format Is Not Accepted
     Go To Add Citation Page And Select Manual
     Fill Manual Citation Form With Required Fields  ${VALID_AUTHOR}  ${VALID_TITLE}  ${VALID_ORGANIZATION}  abc
@@ -68,6 +60,14 @@ Invalid Month Format Is Not Accepted
     Input Text  name=month  abc
     Submit Citation Form
     Page Should Contain  Field month expects a number, received text
+
+Added Manual Citation With All Fields Can Be Viewed
+    Fill All Manual Citation Fields    ${VALID_AUTHOR}  ${VALID_TITLE}  ${VALID_ORGANIZATION}  ${VALID_YEAR}  ${VALID_ADDRESS}  ${VALID_EDITION}  ${VALID_MONTH}  ${VALID_NOTE}  ${VALID_ANNOTE}
+    Submit Citation Form
+    Go To  ${HOME_URL}
+    Page Should Contain  ${VALID_KEY}
+    Page Should Contain  ${VALID_AUTHOR}
+    Page Should Contain  ${VALID_TITLE}
 
 Can View Added Manual Citation
     [Documentation]    Tests that the existing citation created in the previous test can be viewed
