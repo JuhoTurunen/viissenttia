@@ -128,7 +128,7 @@ def get_citation_types():
 def citation_class_to_bibtex_file(citation_list):
     curly_brace_open = "{"
     curly_brace_close = "}"
-    banned_keys = {"created_at", "type", "key"}
+    banned_keys = {"created_at", "type", "key","id"}
     file_path = os.path.join(f"{os.path.dirname(__file__)}/bibtex_files/", "citations.bib")
     with open(file_path, "w", encoding="utf-8") as bibtex:
         for citation_class in citation_list:
