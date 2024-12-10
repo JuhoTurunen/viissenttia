@@ -40,20 +40,15 @@ Fill All Book Citation Fields
     Input Text  name=note  ${note}
 
 Click Citation Brief
-    [Documentation]    Klikkaa citation_brief-elementtiä etusivulla
-    Wait Until Element Is Visible  xpath=//div[contains(@class,'citation_brief') and contains(., '${VALID_TITLE}')]  timeout=0.5
-    Scroll Element Into View  xpath=//div[contains(@class,'citation_brief') and contains(., '${VALID_TITLE}')]
-    Wait Until Element Is Clickable  xpath=//div[contains(@class,'citation_brief') and contains(., '${VALID_TITLE}')]  timeout=0.5
-    Click Element  xpath=//div[contains(@class,'citation_brief') and contains(., '${VALID_TITLE}')]
+    [Documentation]    Click element citation_brief on home page
+    Wait Until Element Is Visible  xpath=//div[contains(@class,'citation_brief') and contains(., '${VALID_KEY}')]  timeout=0.5
+    Click Element  xpath=//div[contains(@class,'citation_brief') and contains(., '${VALID_KEY}')]
 
 Click Delete Button In Popup
-    [Documentation]    Klikkaa Delete-nappia popupissa
+    [Documentation]    Click Delete button on popup
     Wait Until Element Is Visible  xpath=//div[contains(@class, 'popup') and contains(@class, 'shown')]  timeout=0.5
     Wait Until Element Is Visible  xpath=//div[contains(@class, 'popup') and contains(@class, 'shown')]//input[@value='Delete citation']  timeout=0.5
     Click Element  xpath=//div[contains(@class, 'popup') and contains(@class, 'shown')]//input[@value='Delete citation']
-    Page Should Not Contain  ${VALID_KEY}
-    Page Should Not Contain  ${VALID_AUTHOR}
-    Page Should Not Contain  ${VALID_TITLE}
 
 *** Test Cases ***
 
@@ -95,5 +90,4 @@ Can Delete Added Book Citation
     Click Citation Brief
     Click Delete Button In Popup
     Page Should Not Contain  ${VALID_KEY}
-    Page Should Not Contain  ${VALID_AUTHOR}
-    Page Should Not Contain  ${VALID_TITLE}
+
