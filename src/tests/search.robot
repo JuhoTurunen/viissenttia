@@ -52,10 +52,10 @@ Fill All Article Citation Fields
 
 *** Test Cases ***
 
-#Uncomment when delete is added
-#Citation Can't Be Found Before Being Added
-#    Search With Search Term  ${VALID_AUTHOR}
-#    Page Should Contain  No matching results
+
+Citation Can't Be Found Before Being Added
+    Search With Search Term  ${VALID_AUTHOR}
+    Page Should Contain  No matching results
 
 Add Article Citation
     Go To Add Citation Page
