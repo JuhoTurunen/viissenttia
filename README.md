@@ -1,6 +1,8 @@
 # viissenttia
 
-The purpose of the application is citation management.
+The purpose of the application is citation management. 
+
+The application is functional and includes features outlined below. 
 
 
 ## Table of contents
@@ -14,12 +16,19 @@ The purpose of the application is citation management.
 
 The core functionality and features of the application are:
 
-1. Adding citations: Users can add citations of varying types (e.g. article, book) 
-2. Listing citations: Users can list stored citations
+1. Adding citations: Users can add citations of varying types (e.g. article, book)
+2. Viewing citations: Users can view all stored citations
 3. Exporting citations: Users can export stored citations in a BibTeX file that is compatible with LaTeX documents
-4. Filtering citations: Users can filter citations based on criteria (e.g. author, year)
-5. Categorising and tagging citations: Users can associate citations with categories or tags and use these as search criteria
-6. Fetching online citations: Users can fetch reference details by providing a link to the reference (e.g. in the ACM Digital Library) or the DOI 
+4. Searching citations: Users can search for citations
+
+
+### Potential further development
+
+The application may be developed further:
+
+1. Sorting citations: Users can sort citations based on criteria
+2. Categorising and tagging citations: Users can associate citations with categories or tags and use these as search criteria
+3. Fetching online citations: Users can fetch reference details by providing a link to the reference (e.g. in the ACM Digital Library) or the DOI
 
 
 ## Definition of done
@@ -67,4 +76,3 @@ SECRET_KEY=<your-secret-key>
 8. You can now use the application on your browser by navigating to: http://localhost:5001/
 9. Run Robot tests in a separate terminal window with $ robot src/tests/
 10. Stop the application with *ctrl + c* and exit poetry shell with $ exit
-
