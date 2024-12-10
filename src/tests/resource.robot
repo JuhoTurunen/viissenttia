@@ -31,3 +31,15 @@ Submit Citation Form
 
 Open optional fields
     Click Button  Show optional fields
+
+Click Citation Brief
+    [Documentation]    Click element citation_brief on home page
+    [Arguments]  ${element}
+    Wait Until Element Is Visible  xpath=//div[contains(@class,'citation_brief') and contains(., '${element}')]  timeout=0.5
+    Click Element  xpath=//div[contains(@class,'citation_brief') and contains(., '${element}')]
+
+Click Delete Button In Popup
+    [Documentation]    Click Delete button on popup
+    Wait Until Element Is Visible  xpath=//div[contains(@class, 'popup') and contains(@class, 'shown')]  timeout=0.5
+    Wait Until Element Is Visible  xpath=//div[contains(@class, 'popup') and contains(@class, 'shown')]//input[@value='Delete citation']  timeout=0.5
+    Click Element  xpath=//div[contains(@class, 'popup') and contains(@class, 'shown')]//input[@value='Delete citation']

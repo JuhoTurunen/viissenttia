@@ -40,17 +40,6 @@ Fill All Manual Citation Fields
     Input Text  name=note  ${note}
     Input Text  name=annote  ${annote}
 
-Click Citation Brief
-    [Documentation]    Click element citation_brief on home page
-    Wait Until Element Is Visible  xpath=//div[contains(@class,'citation_brief') and contains(., '${VALID_KEY}')]  timeout=0.5
-    Click Element  xpath=//div[contains(@class,'citation_brief') and contains(., '${VALID_KEY}')]
-
-Click Delete Button In Popup
-    [Documentation]    Click Delete button on popup
-    Wait Until Element Is Visible  xpath=//div[contains(@class, 'popup') and contains(@class, 'shown')]  timeout=0.5
-    Wait Until Element Is Visible  xpath=//div[contains(@class, 'popup') and contains(@class, 'shown')]//input[@value='Delete citation']  timeout=0.5
-    Click Element  xpath=//div[contains(@class, 'popup') and contains(@class, 'shown')]//input[@value='Delete citation']
-
 
 *** Test Cases ***
 
@@ -88,6 +77,6 @@ Can View Added Manual Citation
 Can Delete Added Manual Citation
     [Documentation]    Tests that the existing citation created in the earlier test can be deleted
     Go To  ${HOME_URL}
-    Click Citation Brief
+    Click Citation Brief  ${VALID_KEY}
     Click Delete Button In Popup
     Page Should Not Contain  ${VALID_KEY}
