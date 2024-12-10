@@ -143,8 +143,7 @@ def citation_class_to_bibtex_file(citation_list):
             for key, value in citation_dict.items():
                 if isinstance(value, list):
                     for author in value:
-                        if author:
-                            authors += author + " and "
+                        authors += author + " and "
                     authors = authors[:-5]
                     value = authors
                 if key not in banned_keys and value:
