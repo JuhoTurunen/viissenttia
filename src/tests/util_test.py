@@ -116,14 +116,6 @@ class TestClassGenerator(unittest.TestCase):
         validator=Validator(self.article,True)
         self.assertIsNone(validator.check("number",int))
 
-#Validator changed how it gets the authors and now the dictionary form doesn't work anymore, if front_facing=True
-    """def test_none_type_author(self):
-        self.article["author"]=None
-        self.assertAlmostEqual("Field author is required",citation_data_to_class(self.article,True))
-
-    def test_month_is_wrong_form(self):
-        self.article["month"]="jaaaaa"
-        self.assertAlmostEqual("Field month expects a number, received text",citation_data_to_class(self.article,True))"""
 
     def test_wrong_type_citation(self):
         self.article["type"]="artikkeli"
@@ -131,13 +123,14 @@ class TestClassGenerator(unittest.TestCase):
         self.assertIsNone(value)
 
 
-    """def test_bibtex_file_creation(self):
+    def test_bibtex_file_creation(self):
+        self.article["key"]="person1999"
         citation_class_to_bibtex_file([citation_data_to_class(self.article)])
         dirname = os.path.dirname(__file__)
         filename = os.path.join(dirname, "../bibtex_files/citations.bib")
         with open(filename,"r") as bibtex:
             first_line=bibtex.readline()
-        self.assertAlmostEqual(first_line,"@article{person1999,\n")"""
+        self.assertAlmostEqual(first_line,"@article{person1999,\n")
 
     
     def test_article_class_str_format(self):

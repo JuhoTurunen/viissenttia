@@ -175,7 +175,6 @@ def find_value_in_attribute(value,attribute):
 
 
 def filter_search_results(citations,search_terms,search_fields):
-    #to be continued, now just returning to satisfy pylint
     results=[]
     for citation in citations:
         found=False
