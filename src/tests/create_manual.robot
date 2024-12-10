@@ -5,8 +5,8 @@ Suite Teardown   Close Browser
 Test Setup       Go To Add Citation Page And Select Manual
 
 *** Variables ***
-${VALID_KEY}          Author2024-1
-${VALID_AUTHOR}       Manual Author
+${VALID_KEY}          Manual2024-1
+${VALID_AUTHOR}       Author Manual
 ${VALID_TITLE}        Manual Title
 ${VALID_ORGANIZATION}  Manual Organization
 ${VALID_YEAR}         2024
@@ -40,6 +40,18 @@ Fill All Manual Citation Fields
     Input Text  name=note  ${note}
     Input Text  name=annote  ${annote}
 
+Click Citation Brief
+    [Documentation]    Click element citation_brief on home page
+    Wait Until Element Is Visible  xpath=//div[contains(@class,'citation_brief') and contains(., '${VALID_KEY}')]  timeout=0.5
+    Click Element  xpath=//div[contains(@class,'citation_brief') and contains(., '${VALID_KEY}')]
+
+Click Delete Button In Popup
+    [Documentation]    Click Delete button on popup
+    Wait Until Element Is Visible  xpath=//div[contains(@class, 'popup') and contains(@class, 'shown')]  timeout=0.5
+    Wait Until Element Is Visible  xpath=//div[contains(@class, 'popup') and contains(@class, 'shown')]//input[@value='Delete citation']  timeout=0.5
+    Click Element  xpath=//div[contains(@class, 'popup') and contains(@class, 'shown')]//input[@value='Delete citation']
+
+
 *** Test Cases ***
 
 Cannot Send Citation Without Required Fields
@@ -67,3 +79,15 @@ Invalid Month Format Is Not Accepted
     Input Text  name=month  abc
     Submit Citation Form
     Page Should Contain  Field month expects a number, received text
+
+Can View Added Manual Citation
+    [Documentation]    Tests that the existing citation created in the previous test can be viewed
+    Go To  ${HOME_URL}
+    Page Should Contain  ${VALID_KEY}
+
+Can Delete Added Manual Citation
+    [Documentation]    Tests that the existing citation created in the earlier test can be deleted
+    Go To  ${HOME_URL}
+    Click Citation Brief
+    Click Delete Button In Popup
+    Page Should Not Contain  ${VALID_KEY}
