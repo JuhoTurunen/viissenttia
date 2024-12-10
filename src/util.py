@@ -136,16 +136,12 @@ def citation_class_to_bibtex_file(citation_list):
             citation_type = citation_dict.get("type")
             citation_key = citation_dict.get("key")
             tab = "\t"
-            authors = ""
             bibtex.write(f"@{citation_type}")
             bibtex.write(curly_brace_open)
             bibtex.write(f"{citation_key},\n")
             for key, value in citation_dict.items():
                 if isinstance(value, list):
-                    for author in value:
-                        authors += author + " and "
-                    authors = authors[:-5]
-                    value = authors
+                    value = " and ".join(value)
                 if key not in banned_keys and value:
                     bibtex.write(f"{tab}{key} = {{{value}}},\n")
             bibtex.write(curly_brace_close + "\n")
