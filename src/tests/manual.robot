@@ -45,7 +45,7 @@ Fill All Manual Citation Fields
 
 Cannot Send Citation Without Required Fields
     Go To Add Citation Page And Select Manual
-    Page Should Not Contain  Failed to add citation
+    Page Should Not Contain  Successfully added citation
 
 Added Manual Citation With All Fields Can Be Viewed
     Fill All Manual Citation Fields    ${VALID_AUTHOR}  ${VALID_TITLE}  ${VALID_ORGANIZATION}  ${VALID_YEAR}  ${VALID_ADDRESS}  ${VALID_EDITION}  ${VALID_MONTH}  ${VALID_NOTE}  ${VALID_ANNOTE}

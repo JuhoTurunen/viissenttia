@@ -55,7 +55,7 @@ Fill All Inproceedings Citation Fields
 Cannot Send Citation Without Required Fields
     [Documentation]    Tests that user cannot add a new inproceedings type citation without filling in all mandatory fields
     Submit Citation Form
-    Page Should Not Contain  Failed to add citation
+    Page Should Not Contain  Successfully added citation
 
 
 Invalid Year Format Is Not Accepted
