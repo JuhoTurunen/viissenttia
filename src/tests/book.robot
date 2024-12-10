@@ -52,10 +52,10 @@ Click Delete Button In Popup
 
 *** Test Cases ***
 
-Cannot Send Citation Without Required Fields
+Cannot Add Citation Without Filling Required Fields
     [Documentation]    Tests that user cannot add a new book type citation without filling in all mandatory fields
     Submit Citation Form
-    Page Should Not Contain  Failed to add citation
+    Page Should Not Contain  Successfully added citation
 
 Invalid Year Format Is Not Accepted
     [Documentation]    Tests that user cannot add a new book type citation when trying to submit a string as year
@@ -71,20 +71,20 @@ Invalid Volume Format Is Not Accepted
     Submit Citation Form
     Page Should Contain  Field volume expects a number, received text
 
-Can Add Book Citation With All Fields Can Be Viewed
+Can Add Citation With All Fields
     [Documentation]    Tests that user can add a new book type citation using all possible fields
     Fill All Book Citation Fields    ${VALID_AUTHOR}  ${VALID_TITLE}  ${VALID_PUBLISHER}  ${VALID_YEAR}  ${VALID_SERIES}  ${VALID_VOLUME}  ${VALID_EDITION}  ${VALID_ADDRESS}  ${VALID_NOTE}
     Submit Citation Form
     Page Should Contain  Successfully added citation
 
-Can View Added Book Citation
+Can View Added Citation
     [Documentation]    Tests that the existing citation created in the previous test can be viewed
     Go To  ${HOME_URL}
     Page Should Contain  ${VALID_KEY}
     Page Should Contain  ${VALID_AUTHOR}
     Page Should Contain  ${VALID_TITLE}
 
-Can Delete Added Book Citation
+Can Delete Added Citation
     [Documentation]    Tests that the existing citation created in the earlier test can be deleted
     Go To  ${HOME_URL}
     Click Citation Brief
