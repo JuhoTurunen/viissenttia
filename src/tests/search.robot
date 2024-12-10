@@ -5,7 +5,7 @@ Suite Teardown   Close Browser
 Test Setup       Go To Search Page
 
 *** Variables ***
-${VALID_KEY}        Person2021-1
+${VALID_KEY}        Person2021-
 ${VALID_AUTHOR}     Some Person
 ${VALID_TITLE}      Article Title
 ${VALID_JOURNAL}    Article Journal
@@ -54,7 +54,7 @@ Fill All Article Citation Fields
 
 
 Citation Can't Be Found Before Being Added
-    Search With Search Term  ${VALID_AUTHOR}
+    Search With Search Term  This should return nothing 84309367
     Page Should Contain  No matching results
 
 Add Article Citation

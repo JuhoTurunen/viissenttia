@@ -5,7 +5,7 @@ Suite Teardown   Close Browser
 Test Setup       Go To Add Citation Page
 
 *** Variables ***
-${VALID_KEY}        Article2021-1
+${VALID_KEY}        Article2021-
 ${VALID_AUTHOR}     Author Article
 ${VALID_TITLE}      Title Article
 ${VALID_JOURNAL}    Journal Article

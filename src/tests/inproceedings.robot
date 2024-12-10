@@ -5,7 +5,7 @@ Suite Teardown   Close Browser
 Test Setup       Go To Add Citation Page And Select Inproceedings
 
 *** Variables ***
-${VALID_KEY}            Author2023-1
+${VALID_KEY}            Author2023-
 ${VALID_AUTHOR}         Inproceedings Author
 ${VALID_TITLE}          Inproceedings Title
 ${VALID_BOOKTITLE}      Inproceedings Booktitle

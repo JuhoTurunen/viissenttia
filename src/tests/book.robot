@@ -5,7 +5,7 @@ Suite Teardown   Close Browser
 Test Setup       Go To Add Citation Page And Select Book
 
 *** Variables ***
-${VALID_KEY}        Book2022-1
+${VALID_KEY}        Book2022-
 ${VALID_AUTHOR}     Author Book
 ${VALID_TITLE}      Title Book
 ${VALID_YEAR}       2022
