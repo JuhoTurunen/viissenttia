@@ -1,6 +1,6 @@
 import unittest
 from entities.citation import Article, Inproceedings, Book, Manual
-from util import citation_data_to_class,citation_class_to_bibtex_file,sql_insert_writer,Validator,ValidationError
+from util import citation_data_to_class,citation_class_to_bibtex_file,sql_insert_writer,Validator,ValidationError, filter_search_results, get_citation_types
 from datetime import datetime
 import os.path
 
@@ -22,10 +22,10 @@ class TestClassGenerator(unittest.TestCase):
         
         self.book={"key":"test",
                    "type":"book",
-                    "author":["test person"],
+                    "author":["test alien","another alien"],
                     "title":"test title",
                     "publisher":"ACM",
-                    "year":1999,
+                    "year":1998,
                     "created_at":datetime.now(),
                     "volume":2,
                     "series":"sarja",
@@ -141,3 +141,25 @@ class TestClassGenerator(unittest.TestCase):
     def test_sql_insert_writer(self):
         value=sql_insert_writer("article",self.article)
         self.assertIsInstance(value,str)
+
+    def test_search_filter_with_author(self):
+        book=citation_data_to_class(self.book)
+        article=citation_data_to_class(self.article)
+        search_result=filter_search_results([book,article],"alien",["author"])
+        self.assertEqual(len(search_result),1)
+
+    def test_search_filter_with_year(self):
+        book=citation_data_to_class(self.book)
+        article=citation_data_to_class(self.article)
+        search_result=filter_search_results([book,article],"1998",["year"])
+        self.assertEqual(len(search_result),1)
+
+    def test_search_filter_with_title(self):
+        book=citation_data_to_class(self.book)
+        article=citation_data_to_class(self.article)
+        search_result=filter_search_results([book,article],"test",["title"])
+        self.assertEqual(len(search_result),2)
+
+    def test_different_citation_types(self):
+        types=get_citation_types()
+        self.assertCountEqual(types,["inproceedings","book","manual","article"])
