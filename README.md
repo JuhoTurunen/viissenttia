@@ -9,7 +9,7 @@ The application is functional and includes features outlined below.
 - [Application functionality and features](#application-functionality-and-features)
 - [Definition of done](#definition-of-done)
 - [Backlogs](#backlogs)
-- [Testing the application](#testing-the-application)
+- [Setup and testing](#setup-and-testing)
 
 
 ## Application functionality and features
