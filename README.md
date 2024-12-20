@@ -9,6 +9,9 @@ The application is functional and includes features outlined below.
 - [Application functionality and features](#application-functionality-and-features)
 - [Definition of done](#definition-of-done)
 - [Backlogs](#backlogs)
+- [CI - GitHub Actions](#ci---github-actions)
+- [Test coverage](#test-coverage)
+- [Project report](#project-report)
 - [Setup and testing](#setup-and-testing)
 
 
@@ -44,7 +47,7 @@ The application may be developed further:
 The product and sprint backlogs can be found [here](https://helsinkifi-my.sharepoint.com/:x:/g/personal/juzturun_ad_helsinki_fi/ETudBp6OxL5GlwRVfpZgC8cBuwzMSGh-2SWFHwJBbWLTJA?e=7TnnLh)
 
 
-## CI (GitHub Actions)
+## CI - GitHub Actions
 
 [![GHA workflow badge](https://github.com/JuhoTurunen/viissenttia/actions/workflows/main.yaml/badge.svg)](https://github.com/JuhoTurunen/viissenttia/actions)
 
@@ -52,6 +55,11 @@ The product and sprint backlogs can be found [here](https://helsinkifi-my.sharep
 ## Test coverage
 
 [![codecov](https://codecov.io/gh/JuhoTurunen/viissenttia/graph/badge.svg?token=UU1SYQDT8W)](https://codecov.io/gh/JuhoTurunen/viissenttia)
+
+
+## Project report
+
+The project report can be found [here](https://helsinkifi-my.sharepoint.com/:b:/g/personal/jokijenn_ad_helsinki_fi/Eb-SwmYlqMRLhlh2YqH6k1EBElO8IPWJhTSZ7a0RxHI3GA)
 
 
 ## Setup and testing
